@@ -1,4 +1,4 @@
-package com.ssoo;
+package com.delidrones;
 
 import static org.junit.Assert.assertTrue;
 
