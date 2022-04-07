@@ -22,6 +22,7 @@ public class Pedido {
     public synchronized void deliver() throws InterruptedException{
         while(!valueSet){
             wait();
+            //Espera
         }
         System.out.println("Deliver "+quantity);
         valueSet = false;
