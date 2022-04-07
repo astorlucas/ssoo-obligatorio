@@ -26,6 +26,7 @@ public class Pedido {
         System.out.println("Deliver "+quantity);
         valueSet = false;
         notify();
+        //notifica
     }
 
 
