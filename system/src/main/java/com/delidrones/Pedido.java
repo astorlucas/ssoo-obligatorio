@@ -9,6 +9,8 @@ public class Pedido {
     public Date date;
     public boolean valueSet = false;
 
+    
+    //sync means only one thread can call this method
     public synchronized void request(int q) throws InterruptedException{
         while(valueSet){
             wait();
