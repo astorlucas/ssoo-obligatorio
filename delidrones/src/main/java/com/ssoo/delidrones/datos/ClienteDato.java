@@ -1,6 +1,7 @@
 package com.ssoo.delidrones.datos;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import com.ssoo.delidrones.negocio.Cliente;
 
@@ -10,14 +11,15 @@ import org.yaml.snakeyaml.util.ArrayUtils;
 @Repository("test")
 public class ClienteDato {
     
-    private static ArrayList<String> lista = new ArrayList<>();
+    private static ArrayList<Cliente> lista = new ArrayList<>();
 
     public int insertCliente(Cliente cli){
-        lista.add(cli.getName());
+        UUID id = UUID.randomUUID();
+        lista.add(new Cliente(id, cli.getName(), cli.getAdress(), cli.getOrder()));
         return 1;
     }
 
-    public ArrayList<String> selectAllClients(){
+    public ArrayList<Cliente> selectAllClients(){
         return lista;
     }
 

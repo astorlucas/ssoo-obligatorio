@@ -1,5 +1,7 @@
 package com.ssoo.delidrones.negocio;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -9,16 +11,36 @@ import lombok.*;
 
 public class Cliente {
 
-    private int id;
+    private UUID id;
     private String name;
-    private String ubicacion;
+    private String adress;
+    private String order;
 
-    public Cliente(@JsonProperty("name") String name) {
+    public Cliente(@JsonProperty("id") UUID id,
+            @JsonProperty("name") String name,
+            @JsonProperty("adress") String adress,
+            @JsonProperty("order") String order) {
+
+        this.id = id;
         this.name = name;
+        this.order = order;
+        this.adress = adress;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public UUID getId() {
+        return this.id;
+    }
+
+    public String getOrder() {
+        return this.order;
+    }
+
+    public String getAdress() {
+        return this.adress;
     }
 
 }

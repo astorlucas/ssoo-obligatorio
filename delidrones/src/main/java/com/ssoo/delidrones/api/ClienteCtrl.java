@@ -29,7 +29,7 @@ public class ClienteCtrl {
     }
 
     @GetMapping
-    public ArrayList<String> getAllClients(){
+    public ArrayList<Cliente> getAllClients(){
         return clienteServicio.getAllClients();
     }
     

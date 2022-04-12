@@ -23,7 +23,7 @@ public class ClienteSrv {
         return clienteDato.insertCliente(cliente);
     }
 
-    public ArrayList<String> getAllClients(){
+    public ArrayList<Cliente> getAllClients(){
         return clienteDato.selectAllClients();
     }
 
