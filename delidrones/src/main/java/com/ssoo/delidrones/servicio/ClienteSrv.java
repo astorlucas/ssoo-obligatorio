@@ -1,5 +1,7 @@
 package com.ssoo.delidrones.servicio;
 
+import java.util.ArrayList;
+
 import com.ssoo.delidrones.datos.ClienteDato;
 import com.ssoo.delidrones.negocio.Cliente;
 
@@ -21,5 +23,8 @@ public class ClienteSrv {
         return clienteDato.insertCliente(cliente);
     }
 
+    public ArrayList<String> getAllClients(){
+        return clienteDato.selectAllClients();
+    }
 
 }

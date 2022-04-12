@@ -10,10 +10,15 @@ import org.yaml.snakeyaml.util.ArrayUtils;
 @Repository("test")
 public class ClienteDato {
     
-    static ArrayList lista = new ArrayList<>();
+    private static ArrayList<String> lista = new ArrayList<>();
 
     public int insertCliente(Cliente cli){
         lista.add(cli.getName());
         return 1;
     }
+
+    public ArrayList<String> selectAllClients(){
+        return lista;
+    }
+
 }

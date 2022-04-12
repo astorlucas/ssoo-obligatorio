@@ -13,12 +13,12 @@ public class Cliente {
     private String name;
     private String ubicacion;
 
-    public Cliente(@JsonProperty("name") String name){
+    public Cliente(@JsonProperty("name") String name) {
         this.name = name;
     }
- /*
-  public String getName(){
+
+    public String getName() {
         return this.name;
     }
- */
+
 }
