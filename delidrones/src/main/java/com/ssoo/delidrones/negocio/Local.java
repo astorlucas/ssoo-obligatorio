@@ -1,5 +1,9 @@
 package com.ssoo.delidrones.negocio;
 
+import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.*;
 
 @Getter
@@ -9,9 +13,45 @@ import lombok.*;
 
 public class Local {
 
-    private int id;
-    private String nombre;
-    private String ubicacion;
-    private boolean esEstacion;
+    private UUID id;
+    private String name;
+    private String adress;
+    private boolean isStation;
 
+    public Local(@JsonProperty("id") UUID id, 
+    @JsonProperty("name") String name,
+    @JsonProperty("adress") String adress,
+    @JsonProperty("station") boolean isStation){
+
+        this.id = id;
+        this.name = name;
+        this.adress = adress;
+        this.isStation = isStation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public boolean isStation() {
+        return isStation;
+    }
+
+    public void setStation(boolean isStation) {
+        this.isStation = isStation;
+    }
+
+    
 }
