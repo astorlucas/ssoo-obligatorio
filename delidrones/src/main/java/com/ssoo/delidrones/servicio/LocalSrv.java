@@ -6,6 +6,7 @@ import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Local;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class LocalSrv {
     private final LocalDato localDato;
 
     @Autowired
-    public LocalSrv(LocalDato localDato) {
+    public LocalSrv(@Qualifier("local") LocalDato localDato) {
         this.localDato = localDato;
     }
 

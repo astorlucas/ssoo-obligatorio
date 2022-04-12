@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import com.ssoo.delidrones.negocio.Local;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("local")
 public class LocalDato {
     
     private static ArrayList<Local> lista = new ArrayList<>();
@@ -15,7 +18,7 @@ public class LocalDato {
         return 1;
     }
 
-    public ArrayList<Local> selectAllClients(){
+    public ArrayList<Local> selectAllLocals(){
         return lista;
     }
 }

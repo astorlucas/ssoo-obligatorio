@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("api/miapi/local")
@@ -32,5 +33,10 @@ public class LocalCtrl {
     public ArrayList<Local> getAllLocals(){
         return localServicio.getAllLocals();
     }
-    
+
+    //example to get first element
+    @RequestMapping(value = "/primero" , method = RequestMethod.GET)
+    public Local getFirstLocal(){
+        return localServicio.getAllLocals().remove(1);
+    }
 }
