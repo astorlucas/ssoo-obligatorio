@@ -15,7 +15,7 @@ public class ClienteSrv {
     private final ClienteDato clienteDato;
 
     @Autowired
-    public ClienteSrv(@Qualifier("test") ClienteDato cli){
+    public ClienteSrv(@Qualifier("cliente") ClienteDato cli){
         this.clienteDato = cli;
     }
 

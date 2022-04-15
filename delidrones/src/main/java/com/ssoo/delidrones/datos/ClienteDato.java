@@ -7,7 +7,7 @@ import com.ssoo.delidrones.negocio.Cliente;
 
 import org.springframework.stereotype.Repository;
 
-@Repository("test")
+@Repository("cliente")
 public class ClienteDato {
     
     private static ArrayList<Cliente> lista = new ArrayList<>();

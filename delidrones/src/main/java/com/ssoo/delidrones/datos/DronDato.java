@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@Repository("test")
+@Repository("dron")
 
 public class DronDato {
     private static ArrayList<Dron> lista = new ArrayList<>();

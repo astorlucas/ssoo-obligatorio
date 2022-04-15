@@ -14,7 +14,7 @@ public class DronSrv {
     private final DronDato dronDato;
 
     @Autowired
-    public DronSrv(@Qualifier("test") DronDato dron){
+    public DronSrv(@Qualifier("dron") DronDato dron){
         this.dronDato = dron;
     }
 

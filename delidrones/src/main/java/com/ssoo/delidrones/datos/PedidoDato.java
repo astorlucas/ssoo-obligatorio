@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@Repository("test")
+@Repository("pedido")
 
 public class PedidoDato {
     private static ArrayList<Pedido> lista = new ArrayList<>();
