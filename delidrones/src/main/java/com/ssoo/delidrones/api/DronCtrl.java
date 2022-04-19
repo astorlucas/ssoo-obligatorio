@@ -32,6 +32,7 @@ public class DronCtrl {
         return dronServicio.getAllDrones();
     }
 
+    //Puedo hacer start a otro hilo desde otro llamado
     @RequestMapping(value = "/delivering" , method = RequestMethod.GET)
     public ArrayList<String> allDeliveries(){
         Thread hilo1 = new Thread(dronDato,"Hilo pedidos");

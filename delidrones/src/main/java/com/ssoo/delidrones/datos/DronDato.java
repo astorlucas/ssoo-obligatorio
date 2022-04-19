@@ -36,6 +36,7 @@ public class DronDato implements Runnable {
         return historyDeliver;
     }
 
+    //TO-DO ask if thread is finished b4 keep adding orders (simulates shipping)
     @Override
     public void run() {
         
