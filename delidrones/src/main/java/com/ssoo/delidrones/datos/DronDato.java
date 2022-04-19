@@ -12,6 +12,7 @@ import java.util.UUID;
 @Repository("dron")
 
 public class DronDato implements Runnable {
+
     private static ArrayList<Dron> lista = new ArrayList<>();
     private final PedidoDato pedidoDato;
     
@@ -44,6 +45,12 @@ public class DronDato implements Runnable {
         for(Pedido p : pedidos){
             
             historyDeliver.add(p.getTiempoEnvio() + p.getHoraInicio());
+            try {
+                Thread.sleep(400000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
         
     }
