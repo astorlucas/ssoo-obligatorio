@@ -22,14 +22,9 @@ public class PedidoCtrl {
 
     private final PedidoSrv pedidoServicio;
 
-    private final ThreadPoolTaskExecutor taskExecutor;
-
-    Logger logger = LoggerFactory.getLogger(PedidoCtrl.class);
-
     @Autowired
-    public PedidoCtrl(PedidoSrv pedido, ThreadPoolTaskExecutor taskExecutor){
+    public PedidoCtrl(PedidoSrv pedido){
         this.pedidoServicio = pedido;
-        this.taskExecutor = taskExecutor;
     }
 
     @PostMapping
@@ -42,47 +37,9 @@ public class PedidoCtrl {
         return pedidoServicio.getAllPedidos();
     }
 
-    @RequestMapping(value = "/getShippingPrices" , method = RequestMethod.GET)
-    public ResponseEntity getAllStockPrices() {
-
-        List<Double> stockPrices  = getAllThreeShippingPrices();
-        List<String> stockPriceStrings = stockPrices.stream().map(Object::toString).collect(Collectors.toList());
-
-        return ResponseEntity.ok().body(String.join(",", stockPriceStrings));
-    }
     
-    public List<Double> getAllThreeShippingPrices() {
-        List<Double> stockPriceList = new ArrayList<>();
-        CompletableFuture<Double> cf1, cf2, cf3;
-        try {
-            logger.info("Calling async getShippingPrice for order1, active count: {}, Pool size: {}, Queue Size: {}", taskExecutor.getActiveCount(), taskExecutor.getPoolSize(), taskExecutor.getThreadPoolExecutor().getQueue().size());
-            cf1 = pedidoServicio.getShippingPrice("order1");
-            logger.info("Calling async getShippingPrice for order2, active count: {}, Pool size: {}, Queue Size: {}", taskExecutor.getActiveCount(), taskExecutor.getPoolSize(), taskExecutor.getThreadPoolExecutor().getQueue().size());
 
-            cf2 = pedidoServicio.getShippingPrice("order2");
-            logger.info("Calling async getShippingPrice for order3, active count: {}, Pool size: {}, Queue Size: {}", taskExecutor.getActiveCount(), taskExecutor.getPoolSize(), taskExecutor.getThreadPoolExecutor().getQueue().size());
-
-            cf3 = pedidoServicio.getShippingPrice("order3");
-            logger.info("After three calls to async getShippingPrice, active count: {}, Pool size: {}, Queue Size: {}", taskExecutor.getActiveCount(), taskExecutor.getPoolSize(), taskExecutor.getThreadPoolExecutor().getQueue().size());
-
-            // Monitor the threads as they complete.
-            int sleeptime = 0;
-            for(int i = 0; i < 20; i++) {
-                Thread.sleep(100);
-                sleeptime=(i+1)*100;
-                logger.info("After {} milliseconds, active count: {}, Pool size: {}, Queue Size: {}", sleeptime, taskExecutor.getActiveCount(), taskExecutor.getPoolSize(), taskExecutor.getThreadPoolExecutor().getQueue().size());
-            }
-            stockPriceList.add(cf1.get());
-            stockPriceList.add(cf2.get());
-            stockPriceList.add(cf3.get());
-        }
-        catch (Exception e) {
-            System.out.println("error " + e);
-        }
-
-        return stockPriceList;
-
-    }
+    
 
 
 

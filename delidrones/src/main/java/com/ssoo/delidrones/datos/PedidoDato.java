@@ -9,16 +9,17 @@ import java.util.UUID;
 @Repository("pedido")
 
 public class PedidoDato {
+
     private static ArrayList<Pedido> lista = new ArrayList<>();
 
-    public int insertPedido(Pedido cli){
+    public int insertPedido(Pedido cli) {
         UUID id = UUID.randomUUID();
-        lista.add(new Pedido(id));
+        lista.add(new Pedido(id, cli.getId_cliente(), cli.getTiempoEnvio(), cli.getDistancia(), cli.getHoraInicio(),
+                cli.getHoraFin()));
         return 1;
     }
 
-    public ArrayList<Pedido> selectAllPedidos(){
+    public ArrayList<Pedido> selectAllPedidos() {
         return lista;
     }
 }
-
