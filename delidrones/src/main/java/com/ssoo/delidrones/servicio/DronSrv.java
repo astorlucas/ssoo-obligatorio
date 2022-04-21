@@ -32,9 +32,9 @@ public class DronSrv {
         return dronDato.selectAllDrones();
     }
 
-    public ArrayList<String> history(){
-        return dronDato.returnHistory();
-    }
+    // public ArrayList<String> history(){
+    //     return dronDato.returnHistory();
+    // }
 
     
 

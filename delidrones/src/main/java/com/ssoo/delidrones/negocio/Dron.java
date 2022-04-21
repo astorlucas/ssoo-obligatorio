@@ -1,4 +1,5 @@
 package com.ssoo.delidrones.negocio;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -10,55 +11,33 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Dron {
     private UUID id;
-    private int bateria;
+    private String dueno;
+    private Double bateria;
     private String ubicacion;
     private boolean ocupado;
     private boolean cargando;
 
-    public Dron(@JsonProperty("id") UUID id) {
-
+    public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
+            @JsonProperty("battery") Double bateria) {
         this.id = id;
-
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public int getBateria() {
-        return bateria;
-    }
-
-    public void setBateria(int bateria) {
+        this.dueno = dueno;
         this.bateria = bateria;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public String getDueno() {
+        return dueno;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setDueno(String dueno) {
+        this.dueno = dueno;
     }
 
-    public boolean isOcupado() {
-        return ocupado;
+    public Double getBateria() {
+        return bateria;
     }
 
-    public void setOcupado(boolean ocupado) {
-        this.ocupado = ocupado;
-    }
-
-    public boolean isCargando() {
-        return cargando;
-    }
-
-    public void setCargando(boolean cargando) {
-        this.cargando = cargando;
+    public void setBateria(Double bateria) {
+        this.bateria = bateria;
     }
 
 }

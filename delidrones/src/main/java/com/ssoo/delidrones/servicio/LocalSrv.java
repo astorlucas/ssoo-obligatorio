@@ -1,6 +1,7 @@
 package com.ssoo.delidrones.servicio;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Local;
@@ -24,6 +25,10 @@ public class LocalSrv {
 
     public ArrayList<Local> getAllLocals(){
         return localDato.selectAllLocals();
+    }
+
+    public HashMap<String,String> getProcesados(){
+        return LocalDato.pedidoYDron;
     }
 
     

@@ -6,6 +6,10 @@ import com.ssoo.delidrones.negocio.Pedido;
 
 import org.springframework.stereotype.Repository;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -13,47 +17,54 @@ import java.util.UUID;
 
 public class DronDato implements Runnable {
 
-    private static ArrayList<Dron> lista = new ArrayList<>();
-    private final PedidoDato pedidoDato;
-    
-    public DronDato(PedidoDato pedidoDato, ArrayList<String> historyDeliver) {
-        this.pedidoDato = pedidoDato;
-        this.historyDeliver = historyDeliver;
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+
     }
 
-    public ArrayList<String> historyDeliver = new ArrayList<>();
+    private static ArrayList<Dron> drons = new ArrayList<>();
+    // private final PedidoDato pedidoDato;
 
-    public int insertDron(Dron dron){
+    // public DronDato(PedidoDato pedidoDato, ArrayList<String> historyDeliver) {
+    // this.pedidoDato = pedidoDato;
+    // this.historyDeliver = historyDeliver;
+    // }
+
+    // public ArrayList<String> historyDeliver = new ArrayList<>();
+
+    public int insertDron(Dron dron) {
         UUID id = UUID.randomUUID();
-        lista.add(new Dron(id));
+        drons.add(new Dron(id, dron.getDueno(), dron.getBateria()));
         return 1;
     }
 
-    public ArrayList<Dron> selectAllDrones(){
-        return lista;
+    public ArrayList<Dron> selectAllDrones() {
+        return drons;
     }
 
-    public ArrayList<String> returnHistory(){
-        return historyDeliver;
-    }
+    // public ArrayList<String> returnHistory() {
+    // return historyDeliver;
+    // }
 
-    //TO-DO ask if thread is finished b4 keep adding orders (simulates shipping)
-    @Override
-    public void run() {
-        
-        ArrayList<Pedido> pedidos = pedidoDato.selectAllPedidos();
-        for(Pedido p : pedidos){
-            
-            historyDeliver.add(p.getTiempoEnvio() + p.getHoraInicio());
-            try {
-                Thread.sleep(400000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        
-    }
+    // // TO-DO ask if thread is finished b4 keep adding orders (simulates shipping)
+    // @Override
+    // public void run() {
 
+    // ArrayList<Pedido> pedidos = pedidoDato.selectAllPedidos();
+    // for (Pedido p : pedidos) {
+
+    // historyDeliver.add(p.getDestino() + p.getOrigen());
+    // try {
+    // Thread.sleep(400000);
+    // } catch (InterruptedException e) {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    // }
+
+    // }
+
+    
 
 }

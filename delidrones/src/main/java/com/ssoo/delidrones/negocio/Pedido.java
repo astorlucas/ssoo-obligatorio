@@ -3,6 +3,10 @@ package com.ssoo.delidrones.negocio;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -17,19 +21,19 @@ public class Pedido {
     private UUID id;
     private int id_cliente;
     private List<Dron> drones;
-    private String tiempoEnvio;
+    private String origen;
     private int distancia;
-    private String horaInicio;
+    private String destino;
     private String horaFin;
 
     public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") int id_cliente,
-            @JsonProperty("origen") String tiempoEnvio, @JsonProperty("dist") int distancia,
-            @JsonProperty("destino") String horaInicio, @JsonProperty("fin") String horaFin) {
+            @JsonProperty("origen") String origen, @JsonProperty("dist") int distancia,
+            @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin) {
         this.id = id;
         this.id_cliente = id_cliente;
-        this.tiempoEnvio = tiempoEnvio;
+        this.origen = origen;
         this.distancia = distancia;
-        this.horaInicio = horaInicio;
+        this.destino = destino;
         this.horaFin = horaFin;
     }
 
@@ -57,12 +61,8 @@ public class Pedido {
         this.drones = drones;
     }
 
-    public String getTiempoEnvio() {
-        return tiempoEnvio;
-    }
-
-    public void setTiempoEnvio(String tiempoEnvio) {
-        this.tiempoEnvio = tiempoEnvio;
+    public String getOrigen() {
+        return origen;
     }
 
     public int getDistancia() {
@@ -73,12 +73,8 @@ public class Pedido {
         this.distancia = distancia;
     }
 
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
+    public String getDestino() {
+        return destino;
     }
 
     public String getHoraFin() {
@@ -88,5 +84,7 @@ public class Pedido {
     public void setHoraFin(String horaFin) {
         this.horaFin = horaFin;
     }
+
+    
 
 }

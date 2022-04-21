@@ -1,6 +1,7 @@
 package com.ssoo.delidrones.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.ssoo.delidrones.negocio.Local;
 import com.ssoo.delidrones.servicio.LocalSrv;
@@ -39,4 +40,11 @@ public class LocalCtrl {
     public Local getFirstLocal(){
         return localServicio.getAllLocals().remove(1);
     }
+
+    @RequestMapping(value = "/procesados" , method = RequestMethod.GET)
+    public HashMap<String,String> getProcesados(){
+        return localServicio.getProcesados();
+    }
+
+
 }

@@ -1,5 +1,10 @@
 package com.ssoo.delidrones.negocio;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,6 +22,8 @@ public class Local {
     private String name;
     private String adress;
     private boolean isStation;
+    public static ArrayList<Pedido> orders = new ArrayList<>();
+    
 
     public Local(@JsonProperty("id") UUID id, 
     @JsonProperty("name") String name,
@@ -57,5 +64,6 @@ public class Local {
         this.isStation = isStation;
     }
 
+    
     
 }

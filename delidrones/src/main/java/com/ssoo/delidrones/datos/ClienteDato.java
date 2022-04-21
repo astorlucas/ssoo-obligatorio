@@ -33,7 +33,7 @@ public class ClienteDato implements Runnable {
         try {
             // parsing a CSV file into BufferedReader class constructor
             File file = new File(
-                    "/Users/lucasastor/Documents/GitHub/ssoo-obligatorio/delidrones/src/main/resources/cliente.csv");
+                    "C:/Sources/ssoo-obligatorio/delidrones/src/main/resources/cliente.csv");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             while ((line = br.readLine()) != null) // returns a Boolean value
