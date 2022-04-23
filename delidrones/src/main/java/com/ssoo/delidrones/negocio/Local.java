@@ -23,6 +23,7 @@ public class Local {
     private String adress;
     private boolean isStation;
     public static ArrayList<Pedido> orders = new ArrayList<>();
+    public static ArrayList<Dron> drones = new ArrayList<>();
     
 
     public Local(@JsonProperty("id") UUID id, 

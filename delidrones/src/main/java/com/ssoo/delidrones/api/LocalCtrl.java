@@ -3,6 +3,8 @@ package com.ssoo.delidrones.api;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.ssoo.delidrones.datos.LocalDato;
+import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
 import com.ssoo.delidrones.servicio.LocalSrv;
 
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/miapi/local")
 @RestController
 public class LocalCtrl {
-    
+
     private final LocalSrv localServicio;
 
     @Autowired
@@ -26,25 +28,29 @@ public class LocalCtrl {
     }
 
     @PostMapping
-    public void addLocal(@RequestBody Local local){
+    public void addLocal(@RequestBody Local local) {
         localServicio.addLocal(local);
     }
 
     @GetMapping
-    public ArrayList<Local> getAllLocals(){
+    public ArrayList<Local> getAllLocals() {
         return localServicio.getAllLocals();
     }
 
-    //example to get first element
-    @RequestMapping(value = "/primero" , method = RequestMethod.GET)
-    public Local getFirstLocal(){
+    // example to get first element
+    @RequestMapping(value = "/primero", method = RequestMethod.GET)
+    public Local getFirstLocal() {
         return localServicio.getAllLocals().remove(1);
     }
 
-    @RequestMapping(value = "/procesados" , method = RequestMethod.GET)
-    public HashMap<String,String> getProcesados(){
+    @RequestMapping(value = "/procesados", method = RequestMethod.GET)
+    public HashMap<String, String> getProcesados() {
         return localServicio.getProcesados();
     }
 
+    @RequestMapping(value = "/drones", method = RequestMethod.GET)
+    public ArrayList<Dron> dronesDeLocal(@RequestBody String name) {
+        return LocalDato.dronesDeLocal(name);
+    }
 
 }

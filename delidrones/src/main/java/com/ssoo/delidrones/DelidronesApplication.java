@@ -1,13 +1,16 @@
 package com.ssoo.delidrones;
 
+import java.util.Arrays;
+
 import com.ssoo.delidrones.datos.ClienteDato;
 import com.ssoo.delidrones.datos.DronDato;
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.datos.PedidoDato;
 import com.ssoo.delidrones.negocio.Cliente;
 import com.ssoo.delidrones.negocio.Pedido;
+import com.ssoo.delidrones.negocio.Local;
 
-import org.apache.tomcat.jni.Local;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -27,8 +30,12 @@ public class DelidronesApplication {
 		mainPedido.cargarPedidos();
 		mainLocal.cargarDrones();
 
-		mainLocal.procesarPedidos();
-		
+		//mainLocal.procesarPedidos();
+
+		Local illMondo = mainLocal.selectThatLocal("illmondodelapizza");
+		Local laPasiva = mainLocal.selectThatLocal("lapasiva");
+		System.out.println("Drones ill: "+ illMondo.drones.toString());
+		System.out.println("Drones lapa: "+ laPasiva.drones.toString());
 		
 
 		

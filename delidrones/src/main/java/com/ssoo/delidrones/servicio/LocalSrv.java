@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.ssoo.delidrones.datos.LocalDato;
+import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class LocalSrv {
 
     public HashMap<String,String> getProcesados(){
         return LocalDato.pedidoYDron;
+    }
+
+    public ArrayList<Dron> dronesDeLocal(String name){
+        return LocalDato.dronesDeLocal(name);
     }
 
     

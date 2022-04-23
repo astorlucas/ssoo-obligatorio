@@ -15,14 +15,15 @@ import com.ssoo.delidrones.negocio.Pedido;
 import org.springframework.stereotype.Repository;
 
 @Repository("local")
-public class LocalDato {
+public class LocalDato implements Runnable {
 
     private static ArrayList<Local> lista = new ArrayList<>();
     private static ArrayList<Local> stores = new ArrayList<>();
     private static ArrayList<Dron> drons = new ArrayList<>();
     public static ArrayList<Pedido> pedidos = PedidoDato.orders;
-    //public static HashMap<Pedido,Dron> pedidoYDron = new HashMap<>(); this is how it is supposed to be
-    public static HashMap<String,String> pedidoYDron = new HashMap<>();
+    // public static HashMap<Pedido,Dron> pedidoYDron = new HashMap<>(); this is how
+    // it is supposed to be
+    public static HashMap<String, String> pedidoYDron = new HashMap<>();
 
     public int insertLocal(Local local) {
         UUID id = UUID.randomUUID();
@@ -32,6 +33,17 @@ public class LocalDato {
 
     public ArrayList<Local> selectAllLocals() {
         return lista;
+    }
+
+    public static Local selectThatLocal(String name) {
+        for (Local l : stores) {
+            if (name.equals(l.getName())) {
+                return l;
+            }
+            continue;
+        }
+        return null;
+
     }
 
     public void cargarLocales() { // o run() si es un thread
@@ -73,8 +85,13 @@ public class LocalDato {
                 String[] linea = line.split(splitBy); // use comma as separator
                 Double bat = Double.parseDouble(linea[1]);
                 System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat);
+                Local thisLocal = selectThatLocal(linea[0]);
+                System.out.println(thisLocal.getName());
+                if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
+                    thisLocal.drones.add(new Dron(id, linea[0], bat));
+                }
 
-                drons.add(new Dron(id, linea[0], bat));
+                // drons.add(new Dron(id, linea[0], bat));
             }
             br.close();
         } catch (IOException e) {
@@ -83,12 +100,23 @@ public class LocalDato {
 
     }
 
-    public void procesarPedidos(){
-        for(Pedido p : pedidos){
-            for(Dron d : drons){
+    public static ArrayList<Dron> dronesDeLocal(String name) {
+        Local thisLocal = selectThatLocal(name);
+        return thisLocal.drones;
+    }
+
+    public void procesarPedidos() {
+        for (Pedido p : pedidos) {
+            for (Dron d : drons) {
                 pedidoYDron.put(p.getOrigen(), d.getBateria().toString());
             }
         }
+    }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+
     }
 
 }

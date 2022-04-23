@@ -25,16 +25,19 @@ public class Pedido {
     private int distancia;
     private String destino;
     private String horaFin;
+    private String local;
+
 
     public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") int id_cliente,
             @JsonProperty("origen") String origen, @JsonProperty("dist") int distancia,
-            @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin) {
+            @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin, @JsonProperty("local") String local) {
         this.id = id;
         this.id_cliente = id_cliente;
         this.origen = origen;
         this.distancia = distancia;
         this.destino = destino;
         this.horaFin = horaFin;
+        this.local = local;
     }
 
     public UUID getId() {
@@ -85,6 +88,12 @@ public class Pedido {
         this.horaFin = horaFin;
     }
 
-    
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
 
 }
