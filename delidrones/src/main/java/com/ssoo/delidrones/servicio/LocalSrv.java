@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
+import com.ssoo.delidrones.negocio.Pedido;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,21 +21,41 @@ public class LocalSrv {
         this.localDato = localDato;
     }
 
-    public int addLocal(Local local){
+    public int addLocal(Local local) {
         return localDato.insertLocal(local);
     }
 
-    public ArrayList<Local> getAllLocals(){
+    public ArrayList<Local> getAllLocals() {
         return localDato.selectAllLocals();
     }
 
-    public HashMap<String,String> getProcesados(){
+    public HashMap<String, String> getProcesados() {
         return LocalDato.pedidoYDron;
     }
 
-    public ArrayList<Dron> dronesDeLocal(String name){
+    public ArrayList<Dron> dronesDeLocal(String name) {
         return LocalDato.dronesDeLocal(name);
     }
 
-    
+    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
+    // ir recorriendo.
+    public int addPedido(Pedido pedido) {
+        return localDato.insertPedido(pedido);
+    }
+
+    public ArrayList<Pedido> getAllPedidos() {
+        return localDato.selectAllPedidos();
+    }
+
+    public int addDron(Dron dron) {
+        return localDato.insertDron(dron);
+    }
+
+    public ArrayList<Dron> getAllDrones() {
+        return localDato.selectAllDrones();
+    }
+
+    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
+    // ir recorriendo.
+
 }

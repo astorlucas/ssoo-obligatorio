@@ -26,11 +26,13 @@ public class Pedido {
     private String destino;
     private String horaFin;
     private String local;
-
+    private Boolean delivered;
 
     public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") int id_cliente,
             @JsonProperty("origen") String origen, @JsonProperty("dist") int distancia,
-            @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin, @JsonProperty("local") String local) {
+            @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin,
+            @JsonProperty("local") String local,
+            @JsonProperty("done") Boolean delivered) {
         this.id = id;
         this.id_cliente = id_cliente;
         this.origen = origen;
@@ -38,6 +40,7 @@ public class Pedido {
         this.destino = destino;
         this.horaFin = horaFin;
         this.local = local;
+        this.delivered = delivered;
     }
 
     public UUID getId() {
@@ -94,6 +97,14 @@ public class Pedido {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public Boolean getDelivered() {
+        return delivered;
+    }
+
+    public void setDelivered(Boolean delivered) {
+        this.delivered = delivered;
     }
 
 }

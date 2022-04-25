@@ -2,7 +2,6 @@ package com.ssoo.delidrones.api;
 
 import com.ssoo.delidrones.negocio.Pedido;
 import com.ssoo.delidrones.servicio.PedidoSrv;
-import com.ssoo.delidrones.config.AsyncConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

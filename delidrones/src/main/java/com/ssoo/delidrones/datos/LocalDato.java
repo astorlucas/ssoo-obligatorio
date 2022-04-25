@@ -31,6 +31,32 @@ public class LocalDato implements Runnable {
         return 1;
     }
 
+    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
+    // ir recorriendo.
+    public int insertDron(Dron dron) {
+        UUID id = UUID.randomUUID();
+        drons.add(new Dron(id, dron.getDueno(), dron.getBateria()));
+        return 1;
+    }
+
+    public int insertPedido(Pedido cli) {
+        UUID id = UUID.randomUUID();
+        pedidos.add(new Pedido(id, cli.getId_cliente(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
+                cli.getHoraFin(), cli.getLocal(), cli.getDelivered()));
+        return 1;
+    }
+
+    public ArrayList<Pedido> selectAllPedidos() {
+        return pedidos;
+    }
+
+    public ArrayList<Dron> selectAllDrones() {
+        return drons;
+    }
+
+    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
+    // ir recorriendo.
+
     public ArrayList<Local> selectAllLocals() {
         return lista;
     }
@@ -85,13 +111,13 @@ public class LocalDato implements Runnable {
                 String[] linea = line.split(splitBy); // use comma as separator
                 Double bat = Double.parseDouble(linea[1]);
                 System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat);
-                Local thisLocal = selectThatLocal(linea[0]);
-                System.out.println(thisLocal.getName());
-                if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
-                    thisLocal.drones.add(new Dron(id, linea[0], bat));
-                }
+                // Local thisLocal = selectThatLocal(linea[0]);
+                // System.out.println(thisLocal.getName());
+                // if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
+                // thisLocal.drones.add(new Dron(id, linea[0], bat));
+                // }
 
-                // drons.add(new Dron(id, linea[0], bat));
+                drons.add(new Dron(id, linea[0], bat));
             }
             br.close();
         } catch (IOException e) {
@@ -117,7 +143,8 @@ public class LocalDato implements Runnable {
                         + ", Distancia=" + linea[2] + ", Local=" + linea[5]);
                 Integer dist = Integer.parseInt(linea[2]);
                 Integer idCli = Integer.parseInt(linea[2]);
-                pedidos.add(new Pedido(id,idCli,linea[1],dist,linea[3],linea[4],linea[5]));
+                boolean delivered = Boolean.parseBoolean(linea[6]);
+                pedidos.add(new Pedido(id, idCli, linea[1], dist, linea[3], linea[4], linea[5], delivered));
             }
             br.close();
         } catch (IOException e) {

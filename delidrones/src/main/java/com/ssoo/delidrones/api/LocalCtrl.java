@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
+import com.ssoo.delidrones.negocio.Pedido;
 import com.ssoo.delidrones.servicio.LocalSrv;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,29 @@ public class LocalCtrl {
     public ArrayList<Dron> dronesDeLocal(@RequestBody String name) {
         return LocalDato.dronesDeLocal(name);
     }
+
+    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
+    // ir recorriendo.
+    @RequestMapping(value = "/addpedido", method = RequestMethod.POST)
+    public void addPedido(@RequestBody Pedido pedido) {
+        localServicio.addPedido(pedido);
+    }
+
+    @RequestMapping(value = "/getpedidos", method = RequestMethod.GET)
+    public ArrayList<Pedido> getAllPedidos() {
+        return localServicio.getAllPedidos();
+    }
+
+    @RequestMapping(value = "/adddron", method = RequestMethod.POST)
+    public void addDron(@RequestBody Dron dron) {
+        localServicio.addDron(dron);
+    }
+
+    @RequestMapping(value = "/getdrones", method = RequestMethod.POST)
+    public ArrayList<Dron> getAllDrones() {
+        return localServicio.getAllDrones();
+    }
+    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
+    // ir recorriendo.
 
 }
