@@ -19,8 +19,8 @@ public class LocalDato implements Runnable {
 
     private static ArrayList<Local> lista = new ArrayList<>();
     private static ArrayList<Local> stores = new ArrayList<>();
-    private static ArrayList<Dron> drons = new ArrayList<>();
-    public static ArrayList<Pedido> pedidos = PedidoDato.orders;
+    public static ArrayList<Dron> drons = new ArrayList<>();
+    public static ArrayList<Pedido> pedidos = new ArrayList<>();
     // public static HashMap<Pedido,Dron> pedidoYDron = new HashMap<>(); this is how
     // it is supposed to be
     public static HashMap<String, String> pedidoYDron = new HashMap<>();
@@ -92,6 +92,32 @@ public class LocalDato implements Runnable {
                 }
 
                 // drons.add(new Dron(id, linea[0], bat));
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void cargarPedidos() { // o run() si es un thread
+        String line = "";
+        String splitBy = ",";
+        try {
+            // parsing a CSV file into BufferedReader class constructor
+            File file = new File(
+                    "C:/Sources/ssoo-obligatorio/delidrones/src/main/resources/pedido.csv");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            while ((line = br.readLine()) != null) // returns a Boolean value
+            {
+                UUID id = UUID.randomUUID();
+                String[] linea = line.split(splitBy); // use comma as separator
+                System.out.println("ID CLIENTE=" + linea[0] + ", Adress=" + linea[1]
+                        + ", Distancia=" + linea[2] + ", Local=" + linea[5]);
+                Integer dist = Integer.parseInt(linea[2]);
+                Integer idCli = Integer.parseInt(linea[2]);
+                pedidos.add(new Pedido(id,idCli,linea[1],dist,linea[3],linea[4],linea[5]));
             }
             br.close();
         } catch (IOException e) {
