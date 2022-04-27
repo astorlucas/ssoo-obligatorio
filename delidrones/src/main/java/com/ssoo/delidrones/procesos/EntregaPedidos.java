@@ -1,4 +1,4 @@
-package com.ssoo.delidrones.transacciones;
+package com.ssoo.delidrones.procesos;
 
 import java.io.IOException;
 import java.nio.CharBuffer;

@@ -35,13 +35,4 @@ public class PedidoCtrl {
     public ArrayList<Pedido> getAllPedidos(){
         return pedidoServicio.getAllPedidos();
     }
-
-    
-
-    
-
-    
-
-
-
 }

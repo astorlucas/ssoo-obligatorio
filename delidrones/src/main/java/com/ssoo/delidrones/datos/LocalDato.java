@@ -78,7 +78,7 @@ public class LocalDato implements Runnable {
         try {
             // parsing a CSV file into BufferedReader class constructor
             File file = new File(
-                    "C:/Sources/ssoo-obligatorio/delidrones/src/main/resources/local.csv");
+                    "./src/main/resources/local.csv");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             while ((line = br.readLine()) != null) // returns a Boolean value
@@ -102,7 +102,7 @@ public class LocalDato implements Runnable {
         try {
             // parsing a CSV file into BufferedReader class constructor
             File file = new File(
-                    "C:/Sources/ssoo-obligatorio/delidrones/src/main/resources/dron.csv");
+                    "./src/main/resources/dron.csv");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             while ((line = br.readLine()) != null) // returns a Boolean value
@@ -132,7 +132,7 @@ public class LocalDato implements Runnable {
         try {
             // parsing a CSV file into BufferedReader class constructor
             File file = new File(
-                    "C:/Sources/ssoo-obligatorio/delidrones/src/main/resources/pedido.csv");
+                    "./src/main/resources/pedido.csv");
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             while ((line = br.readLine()) != null) // returns a Boolean value
