@@ -8,7 +8,7 @@ import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.datos.PedidoDato;
 import com.ssoo.delidrones.negocio.Cliente;
 import com.ssoo.delidrones.negocio.Pedido;
-import com.ssoo.delidrones.procesos.AsignarDrones;
+import com.ssoo.delidrones.procesos.EntregarPedidos;
 import com.ssoo.delidrones.negocio.Local;
 
 import org.springframework.boot.SpringApplication;
@@ -27,7 +27,7 @@ public class DelidronesApplication {
 		mainLocal.cargarPedidos();
 		mainLocal.cargarDrones();
 
-		Thread miHilo = new Thread(new AsignarDrones(mainLocal));
+		Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
 		miHilo.start();
 
 		// mainLocal.procesarPedidos();

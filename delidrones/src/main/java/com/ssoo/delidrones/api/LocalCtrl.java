@@ -7,6 +7,7 @@ import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
 import com.ssoo.delidrones.negocio.Pedido;
+import com.ssoo.delidrones.procesos.EntregarPedidos;
 import com.ssoo.delidrones.servicio.LocalSrv;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,8 @@ public class LocalCtrl {
     @RequestMapping(value = "/addpedido", method = RequestMethod.POST)
     public void addPedido(@RequestBody Pedido pedido) {
         localServicio.addPedido(pedido);
+        //Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
+		//miHilo.start();
     }
 
     @RequestMapping(value = "/getpedidos", method = RequestMethod.GET)
