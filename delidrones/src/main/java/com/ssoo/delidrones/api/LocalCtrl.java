@@ -2,6 +2,7 @@ package com.ssoo.delidrones.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Dron;
@@ -65,7 +66,7 @@ public class LocalCtrl {
     }
 
     @RequestMapping(value = "/getpedidos", method = RequestMethod.GET)
-    public ArrayList<Pedido> getAllPedidos() {
+    public List<Pedido> getAllPedidos() {
         return localServicio.getAllPedidos();
     }
 
@@ -75,7 +76,7 @@ public class LocalCtrl {
     }
 
     @RequestMapping(value = "/getdrones", method = RequestMethod.POST)
-    public ArrayList<Dron> getAllDrones() {
+    public List<Dron> getAllDrones() {
         return localServicio.getAllDrones();
     }
     // Esto es para probar añadiendo directamente en la lista que a mi me interesa

@@ -1,5 +1,8 @@
 package com.ssoo.delidrones.procesos;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Pedido;
@@ -19,7 +22,7 @@ public class EntregarPedidos implements Runnable {
 
     @Override
     public void run() {
-        //while (true) {
+        while (true) {
             // for (Pedido p : esteLocal.pedidos) {
             // if (p.getDelivered() == false) {
             // System.out.println("PEDIDO PROC: " + p.getOrigen());
@@ -41,11 +44,13 @@ public class EntregarPedidos implements Runnable {
                 for (Dron d : esteLocal.drons) {
                     if (p.getLocal().equals(d.getDueno()) && p.getDelivered() == false) { // Compare for distance
                         esteLocal.pedidoYDron.put(p.getLocal(), d.getDueno());
+                        System.out.println("Estoy asignando PEDIDO: "+ p.getLocal() + " DRON: " + d.getDueno());
                         p.setDelivered(true);
                     }
                 }
             }
-        //}
+
+        }
 
     }
 }

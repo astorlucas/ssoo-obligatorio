@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
@@ -19,8 +21,8 @@ public class LocalDato implements Runnable {
 
     private static ArrayList<Local> lista = new ArrayList<>();
     private static ArrayList<Local> stores = new ArrayList<>();
-    public static ArrayList<Dron> drons = new ArrayList<>();
-    public static ArrayList<Pedido> pedidos = new ArrayList<>();
+    public static List<Dron> drons = new CopyOnWriteArrayList<>();
+    public static List<Pedido> pedidos = new CopyOnWriteArrayList<>();
     // public static HashMap<Pedido,Dron> pedidoYDron = new HashMap<>(); this is how
     // it is supposed to be
     public static HashMap<String, String> pedidoYDron = new HashMap<>();
@@ -44,14 +46,6 @@ public class LocalDato implements Runnable {
         pedidos.add(new Pedido(id, cli.getId_cliente(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
                 cli.getHoraFin(), cli.getLocal(), cli.getDelivered()));
         return 1;
-    }
-
-    public ArrayList<Pedido> selectAllPedidos() {
-        return pedidos;
-    }
-
-    public ArrayList<Dron> selectAllDrones() {
-        return drons;
     }
 
     // Esto es para probar añadiendo directamente en la lista que a mi me interesa
@@ -170,6 +164,14 @@ public class LocalDato implements Runnable {
     public void run() {
         // TODO Auto-generated method stub
 
+    }
+
+    public List<Pedido> selectAllPedidos() {
+        return pedidos;
+    }
+
+    public List<Dron> selectAllDrones() {
+        return drons;
     }
 
 }

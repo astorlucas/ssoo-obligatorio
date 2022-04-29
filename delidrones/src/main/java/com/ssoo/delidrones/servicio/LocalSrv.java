@@ -2,6 +2,7 @@ package com.ssoo.delidrones.servicio;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.negocio.Dron;
@@ -43,7 +44,7 @@ public class LocalSrv {
         return localDato.insertPedido(pedido);
     }
 
-    public ArrayList<Pedido> getAllPedidos() {
+    public List<Pedido> getAllPedidos() {
         return localDato.selectAllPedidos();
     }
 
@@ -51,7 +52,7 @@ public class LocalSrv {
         return localDato.insertDron(dron);
     }
 
-    public ArrayList<Dron> getAllDrones() {
+    public List<Dron> getAllDrones() {
         return localDato.selectAllDrones();
     }
 
