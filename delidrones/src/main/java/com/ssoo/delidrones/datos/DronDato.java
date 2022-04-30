@@ -35,7 +35,7 @@ public class DronDato implements Runnable {
 
     public int insertDron(Dron dron) {
         UUID id = UUID.randomUUID();
-        drons.add(new Dron(id, dron.getDueno(), dron.getBateria()));
+        drons.add(new Dron(id, dron.getDueno(), dron.getBateria(), dron.getAva()));
         return 1;
     }
 

@@ -14,18 +14,29 @@ public class Dron {
     private String dueno;
     private Double bateria;
     private String ubicacion;
-    private boolean ocupado;
+    private Boolean ava;
     private boolean cargando;
 
     public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
-            @JsonProperty("battery") Double bateria) {
+            @JsonProperty("battery") Double bateria, 
+            @JsonProperty("availability") Boolean ava) {
         this.id = id;
         this.dueno = dueno;
         this.bateria = bateria;
+        this.ava = ava;
     }
 
     public String getDueno() {
         return dueno;
+    }
+
+    public Boolean getAvailability(){
+        return true;
+    }
+
+    public void makeMeAvailable(Dron dron) throws InterruptedException{
+        Thread.sleep(200000);
+        dron.setAva(true);
     }
 
     public void setDueno(String dueno) {
@@ -38,6 +49,14 @@ public class Dron {
 
     public void setBateria(Double bateria) {
         this.bateria = bateria;
+    }
+
+    public Boolean getAva() {
+        return ava;
+    }
+
+    public void setAva(Boolean ava) {
+        this.ava = ava;
     }
 
 }

@@ -37,7 +37,7 @@ public class LocalDato implements Runnable {
     // ir recorriendo.
     public int insertDron(Dron dron) {
         UUID id = UUID.randomUUID();
-        drons.add(new Dron(id, dron.getDueno(), dron.getBateria()));
+        drons.add(new Dron(id, dron.getDueno(), dron.getBateria(), dron.getAva()));
         return 1;
     }
 
@@ -104,14 +104,15 @@ public class LocalDato implements Runnable {
                 UUID id = UUID.randomUUID();
                 String[] linea = line.split(splitBy); // use comma as separator
                 Double bat = Double.parseDouble(linea[1]);
-                System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat);
+                //boolean busy = Boolean.parseBoolean(linea[2]);
+                System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat + " Busy: " + linea[1]);
                 // Local thisLocal = selectThatLocal(linea[0]);
                 // System.out.println(thisLocal.getName());
                 // if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
                 // thisLocal.drones.add(new Dron(id, linea[0], bat));
                 // }
-
-                drons.add(new Dron(id, linea[0], bat));
+                
+                drons.add(new Dron(id, linea[0], bat, true));
             }
             br.close();
         } catch (IOException e) {

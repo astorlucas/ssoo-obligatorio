@@ -23,29 +23,14 @@ public class EntregarPedidos implements Runnable {
     @Override
     public void run() {
         while (true) {
-            // for (Pedido p : esteLocal.pedidos) {
-            // if (p.getDelivered() == false) {
-            // System.out.println("PEDIDO PROC: " + p.getOrigen());
-            // for (Dron d : esteLocal.drons) {
-            // System.out.println("DRON PROC: " + d.getDueno());
-            // try {
-            // Thread.sleep(1000);
-            // } catch (InterruptedException e) {
-            // // TODO Auto-generated catch block
-            // e.printStackTrace();
-            // }
-            // esteLocal.pedidoYDron.put("Origen: " + p.getOrigen(), "DUEÑO: " +
-            // d.getDueno());
-            // p.setDelivered(true);
-            // }
-            // }
-            // }
+            //as for online order taking, DONE
             for (Pedido p : esteLocal.pedidos) {
                 for (Dron d : esteLocal.drons) {
-                    if (p.getLocal().equals(d.getDueno()) && p.getDelivered() == false) { // Compare for distance
+                    if (p.getLocal().equals(d.getDueno()) && p.getDelivered() == false && d.getAva() == true) { // Compare for distance
                         esteLocal.pedidoYDron.put(p.getLocal(), d.getDueno());
                         System.out.println("Estoy asignando PEDIDO: "+ p.getLocal() + " DRON: " + d.getDueno());
                         p.setDelivered(true);
+                        d.setAva(false);
                     }
                 }
             }
