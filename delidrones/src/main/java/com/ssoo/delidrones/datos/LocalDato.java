@@ -23,6 +23,7 @@ public class LocalDato implements Runnable {
     private static ArrayList<Local> stores = new ArrayList<>();
     public static List<Dron> drons = new CopyOnWriteArrayList<>();
     public static List<Pedido> pedidos = new CopyOnWriteArrayList<>();
+    public static List<Pedido> cookedOrders = new CopyOnWriteArrayList<>();
     // public static HashMap<Pedido,Dron> pedidoYDron = new HashMap<>(); this is how
     // it is supposed to be
     public static HashMap<String, String> pedidoYDron = new HashMap<>();
@@ -174,5 +175,7 @@ public class LocalDato implements Runnable {
     public List<Dron> selectAllDrones() {
         return drons;
     }
+
+
 
 }

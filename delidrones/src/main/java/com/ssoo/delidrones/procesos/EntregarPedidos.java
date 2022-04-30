@@ -24,13 +24,15 @@ public class EntregarPedidos implements Runnable {
     public void run() {
         while (true) {
             //as for online order taking, DONE
-            for (Pedido p : esteLocal.pedidos) {
+            //assignation taking for local DONE
+            for (Pedido p : esteLocal.cookedOrders) {
                 for (Dron d : esteLocal.drons) {
                     if (p.getLocal().equals(d.getDueno()) && p.getDelivered() == false && d.getAva() == true) { // Compare for distance
                         esteLocal.pedidoYDron.put(p.getLocal(), d.getDueno());
                         System.out.println("Estoy asignando PEDIDO: "+ p.getLocal() + " DRON: " + d.getDueno());
                         p.setDelivered(true);
                         d.setAva(false);
+                        //TO-DO make drones available once the delivery is done
                     }
                 }
             }

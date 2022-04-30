@@ -34,9 +34,9 @@ public class Dron {
         return true;
     }
 
-    public void makeMeAvailable(Dron dron) throws InterruptedException{
-        Thread.sleep(200000);
-        dron.setAva(true);
+    public void makeMeAvailable() throws InterruptedException{
+        Thread.sleep(2000);
+        this.setAva(true);
     }
 
     public void setDueno(String dueno) {
