@@ -22,6 +22,7 @@ public class PrepararOrden implements Runnable{
             }
             System.out.println("I'm waiting until it is finished");
             esteLocal.cookedOrders.add(p);
+            //After it is finished, it is added done for delivery
         }
         
     }
