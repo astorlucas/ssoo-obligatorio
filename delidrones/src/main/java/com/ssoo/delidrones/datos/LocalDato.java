@@ -44,8 +44,8 @@ public class LocalDato implements Runnable {
 
     public int insertPedido(Pedido cli) {
         UUID id = UUID.randomUUID();
-        pedidos.add(new Pedido(id, cli.getId_cliente(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
-                cli.getHoraFin(), cli.getLocal(), cli.getDelivered()));
+        pedidos.add(new Pedido(id, cli.getfoodName(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
+                cli.getHoraFin(), cli.getLocal(), cli.getDelivered(), cli.getPrepTime()));
         return 1;
     }
 
@@ -138,9 +138,9 @@ public class LocalDato implements Runnable {
                 System.out.println("ID CLIENTE=" + linea[0] + ", Adress=" + linea[1]
                         + ", Distancia=" + linea[2] + ", Local=" + linea[5]);
                 Integer dist = Integer.parseInt(linea[2]);
-                Integer idCli = Integer.parseInt(linea[2]);
+                Integer prepTime = Integer.parseInt(linea[7]);
                 boolean delivered = Boolean.parseBoolean(linea[6]);
-                pedidos.add(new Pedido(id, idCli, linea[1], dist, linea[3], linea[4], linea[5], delivered));
+                pedidos.add(new Pedido(id, linea[0], linea[1], dist, linea[3], linea[4], linea[5], delivered,prepTime));
             }
             br.close();
         } catch (IOException e) {

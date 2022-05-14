@@ -1,5 +1,5 @@
-1,ORIGEN1-18 de Julio 222,2,River 1414,1:10,lapasiva,false
-2,ORIGEN2-18 de Julio 1466,4,Trigliceridos 1616,10:18,illmondodelapizza,false
-3,ORIGEN3-Chimborazo 222,7,Nollio 1414,9:10,lapasiva,false
-4,ORIGEN4-18 de Julio 1466,12,Peppa Pig 1616,13:18,lapasiva,false
-5,ORIGEN5-Marito Moreno,12,Alejandro 1616,13:18,PEDROLLO,false
+hamburguesa_con_fritas,ORIGEN1-18 de Julio 222,2,River 1414,1:10,lapasiva,false,1200
+pizza_con_anana,ORIGEN2-18 de Julio 1466,4,Trigliceridos 1616,10:18,illmondodelapizza,false,2000
+pizza_con_muzza,ORIGEN3-Chimborazo 222,7,Nollio 1414,9:10,lapasiva,false,600
+cordero_a_las_brasas,ORIGEN4-18 de Julio 1466,12,Peppa Pig 1616,13:18,lapasiva,false,100000
+pan_con_queso,ORIGEN5-Marito Moreno,12,Alejandro 1616,13:18,PEDROLLO,false,2000

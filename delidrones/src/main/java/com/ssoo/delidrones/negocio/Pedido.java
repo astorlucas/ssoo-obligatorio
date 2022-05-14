@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 public class Pedido {
 
     private UUID id;
-    private int id_cliente;
     private List<Dron> drones;
     private String origen;
     private int distancia;
@@ -27,20 +26,24 @@ public class Pedido {
     private String horaFin;
     private String local;
     private Boolean delivered;
+    private String foodName;
+    private Integer prepTime;
 
-    public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") int id_cliente,
+    public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") String foodName,
             @JsonProperty("origen") String origen, @JsonProperty("dist") int distancia,
             @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin,
             @JsonProperty("local") String local,
-            @JsonProperty("done") Boolean delivered) {
+            @JsonProperty("done") Boolean delivered,
+            @JsonProperty("time") Integer prepTime) {
         this.id = id;
-        this.id_cliente = id_cliente;
+        this.foodName = foodName;
         this.origen = origen;
         this.distancia = distancia;
         this.destino = destino;
         this.horaFin = horaFin;
         this.local = local;
         this.delivered = delivered;
+        this.prepTime = prepTime;
     }
 
     public UUID getId() {
@@ -51,12 +54,8 @@ public class Pedido {
         this.id = id;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public String getfoodName() {
+        return foodName;
     }
 
     public List<Dron> getDrones() {
@@ -105,6 +104,14 @@ public class Pedido {
 
     public void setDelivered(Boolean delivered) {
         this.delivered = delivered;
+    }
+
+    public Integer getPrepTime() {
+        return prepTime;
+    }
+
+    public void setPrepTime(Integer prepTime) {
+        this.prepTime = prepTime;
     }
 
 }

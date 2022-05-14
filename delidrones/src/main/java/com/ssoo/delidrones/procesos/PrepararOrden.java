@@ -15,12 +15,11 @@ public class PrepararOrden implements Runnable{
     public void run() {
         for(Pedido p : esteLocal.pedidos){
             try {
-                Thread.sleep(2000);
+                Thread.sleep(p.getPrepTime());
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            System.out.println("I'm waiting until it is finished");
+            System.out.println("The food " +p.getfoodName() + " is finished and added to the queue");
             esteLocal.cookedOrders.add(p);
             //After it is finished, it is added done for delivery
         }

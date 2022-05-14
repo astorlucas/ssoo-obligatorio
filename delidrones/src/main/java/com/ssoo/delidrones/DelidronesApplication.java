@@ -21,7 +21,13 @@ public class DelidronesApplication {
 
 		SpringApplication.run(DelidronesApplication.class, args);
 
+		//Abren los locales
+		Local laPasiva = new Local(null, "la_Pasiva", "18_de_Julio_1123", true);
+		Local illMondo = new Local(null, "ill_Mondo", "18_de_Julio_1255", true);
+
+		
 		LocalDato mainLocal = new LocalDato();
+
 
 		mainLocal.cargarLocales();
 		mainLocal.cargarPedidos();

@@ -26,9 +26,9 @@ public class PedidoSrv {
         this.pedidoDato = pedido;
     }
 
-    public int addPedido(Pedido pedido) {
-        return pedidoDato.insertPedido(pedido);
-    }
+    // public int addPedido(Pedido pedido) {
+    //     return pedidoDato.insertPedido(pedido);
+    // }
 
     public ArrayList<Pedido> getAllPedidos() {
         return pedidoDato.selectAllPedidos();

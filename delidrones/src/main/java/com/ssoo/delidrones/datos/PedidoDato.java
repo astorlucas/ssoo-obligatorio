@@ -17,12 +17,12 @@ public class PedidoDato {
 
     public static ArrayList<Pedido> orders = new ArrayList<>();
 
-    public int insertPedido(Pedido cli) {
-        UUID id = UUID.randomUUID();
-        orders.add(new Pedido(id, cli.getId_cliente(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
-                cli.getHoraFin(),cli.getLocal(), cli.getDelivered()));
-        return 1;
-    }
+    // public int insertPedido(Pedido cli) {
+    //     UUID id = UUID.randomUUID();
+    //     orders.add(new Pedido(id, cli.getfoodName(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
+    //             cli.getHoraFin(),cli.getLocal(), cli.getDelivered()));
+    //     return 1;
+    // }
 
     public ArrayList<Pedido> selectAllPedidos() {
         return orders;
