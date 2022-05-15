@@ -24,6 +24,7 @@ public class LocalDato implements Runnable {
     public static List<Dron> drons = new CopyOnWriteArrayList<>();
     public static List<Pedido> pedidos = new CopyOnWriteArrayList<>();
     public static List<Pedido> cookedOrders = new CopyOnWriteArrayList<>();
+    public static List<Thread> dronsThread = new CopyOnWriteArrayList<>();
     // public static HashMap<Pedido,Dron> pedidoYDron = new HashMap<>(); this is how
     // it is supposed to be
     public static HashMap<String, String> pedidoYDron = new HashMap<>();
@@ -114,6 +115,8 @@ public class LocalDato implements Runnable {
                 // }
                 
                 drons.add(new Dron(id, linea[0], bat, true));
+                dronsThread.add(new Thread(new Dron(id, linea[0], bat, true)));
+
             }
             br.close();
         } catch (IOException e) {

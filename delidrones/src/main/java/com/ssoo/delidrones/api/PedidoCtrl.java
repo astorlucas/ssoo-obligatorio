@@ -26,10 +26,10 @@ public class PedidoCtrl {
         this.pedidoServicio = pedido;
     }
 
-    @PostMapping
-    public void addPedido(@RequestBody Pedido pedido){
-        pedidoServicio.addPedido(pedido);
-    }
+    // @PostMapping
+    // public void addPedido(@RequestBody Pedido pedido){
+    //     pedidoServicio.addPedido(pedido);
+    // }
 
     @GetMapping
     public ArrayList<Pedido> getAllPedidos(){

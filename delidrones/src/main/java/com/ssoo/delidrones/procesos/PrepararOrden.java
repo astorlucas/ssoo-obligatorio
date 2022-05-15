@@ -14,8 +14,9 @@ public class PrepararOrden implements Runnable{
     @Override
     public void run() {
         for(Pedido p : esteLocal.pedidos){
+            Integer relativeTime = p.getPrepTime()*10;
             try {
-                Thread.sleep(p.getPrepTime());
+                Thread.sleep(relativeTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

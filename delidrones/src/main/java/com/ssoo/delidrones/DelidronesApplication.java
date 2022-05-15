@@ -7,6 +7,7 @@ import com.ssoo.delidrones.datos.DronDato;
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.datos.PedidoDato;
 import com.ssoo.delidrones.negocio.Cliente;
+import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Pedido;
 import com.ssoo.delidrones.procesos.*;
 import com.ssoo.delidrones.negocio.Local;
@@ -27,17 +28,21 @@ public class DelidronesApplication {
 
 		
 		LocalDato mainLocal = new LocalDato();
-
+		
 
 		mainLocal.cargarLocales();
 		mainLocal.cargarPedidos();
 		mainLocal.cargarDrones();
 
+		for(Thread d : mainLocal.dronsThread){
+			d.start();
+		}
+
 		Thread miHilo1 = new Thread(new PrepararOrden(mainLocal));
 		miHilo1.start();
 
-		Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
-		miHilo.start();
+		// Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
+		// miHilo.start();
 
 		// mainLocal.procesarPedidos();
 

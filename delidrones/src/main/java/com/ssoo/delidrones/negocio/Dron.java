@@ -1,6 +1,8 @@
 package com.ssoo.delidrones.negocio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ssoo.delidrones.datos.LocalDato;
+
 import lombok.*;
 
 import java.util.UUID;
@@ -9,13 +11,18 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dron {
+public class Dron implements Runnable {
     private UUID id;
     private String dueno;
     private Double bateria;
     private String ubicacion;
     private Boolean ava;
     private boolean cargando;
+    private LocalDato esteLocal;
+
+    public Dron(LocalDato esteLocal) {
+        this.esteLocal = esteLocal;
+    }
 
     public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
             @JsonProperty("battery") Double bateria, 
@@ -57,6 +64,17 @@ public class Dron {
 
     public void setAva(Boolean ava) {
         this.ava = ava;
+    }
+
+    @Override
+    public void run() {
+        //Recorrer los pedidos cocinados ponerle un flag de already asignados
+        //demorar la entrega en base a un timeout fixed que viene en el archivo de pedidos
+        //aunque los pedidos se siguen cocinando
+        for(Pedido p : esteLocal.cookedOrders){
+            System.out.println("Delivering order: " + this.id);
+        }
+        
     }
 
 }
