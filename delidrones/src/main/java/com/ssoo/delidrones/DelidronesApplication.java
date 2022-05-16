@@ -31,32 +31,41 @@ public class DelidronesApplication {
 		Local laPasiva = new Local(null, "la_Pasiva", "18_de_Julio_1123", true);
 		Local illMondo = new Local(null, "ill_Mondo", "18_de_Julio_1255", true);
 		//Locales encienden los drones
-		UUID id2 = UUID.randomUUID();
-		UUID id3 = UUID.randomUUID();
-		UUID id4 = UUID.randomUUID();
-		UUID id5 = UUID.randomUUID();
-		Thread laPasivaDron1 = new Thread(new Dron(id2, "lapasiva",70.0d,true, semDron));
-		Thread laPasivaDron2 = new Thread(new Dron(id3, "lapasiva",70.0d,true, semDron));
-		Thread illMondoDron1 = new Thread(new Dron(id4, "illmondodelapizza",70.0d,true, semDron));
-		Thread illMondoDron2 = new Thread(new Dron(id5, "illmondodelapizza",70.0d,true, semDron));
+		// UUID id2 = UUID.randomUUID();
+		// UUID id3 = UUID.randomUUID();
+		// UUID id4 = UUID.randomUUID();
+		// UUID id5 = UUID.randomUUID();
+		// Thread laPasivaDron1 = new Thread(new Dron(id2, "lapasiva",70.0d,false, semDron));
+		// Thread laPasivaDron2 = new Thread(new Dron(id3, "lapasiva",70.0d,false, semDron));
+		// Thread illMondoDron1 = new Thread(new Dron(id4, "illmondodelapizza",70.0d,false, semDron));
+		// Thread illMondoDron2 = new Thread(new Dron(id5, "illmondodelapizza",70.0d,false, semDron));
+		
 		
 
 		LocalDato mainLocal = new LocalDato();
 		//mainLocal.cargarLocales();
 		mainLocal.cargarPedidos();
-		//mainLocal.cargarDrones();
-
+		mainLocal.cargarDrones();
+		
+		
 		
 
 		//Se comienzan a cocinar los pedidos crudos
-		Thread cocinar = new Thread(new PrepararOrden(mainLocal));
+		Thread cocinar = new Thread(new PrepararOrden(mainLocal,semDron));
 		cocinar.start();
+		
+		Thread repartidorHilo1 = new Thread(new RepartirPedidos(semDron, mainLocal));
+		Thread repartidorHilo2 = new Thread(new RepartirPedidos(semDron, mainLocal));
+		Thread repartidorHilo3 = new Thread(new RepartirPedidos(semDron, mainLocal));
+		repartidorHilo1.start();
+		//repartidorHilo2.start();
+		//repartidorHilo3.start();
 
-		laPasivaDron1.start();
-		laPasivaDron2.start();
-		illMondoDron1.start();
-		illMondoDron2.start();
-		semDron.release(1);
+
+		// laPasivaDron1.start();
+		// laPasivaDron2.start();
+		// illMondoDron1.start();
+		// illMondoDron2.start();
 		
 
 		// Thread miHilo = new Thread(new EntregarPedidos(mainLocal));

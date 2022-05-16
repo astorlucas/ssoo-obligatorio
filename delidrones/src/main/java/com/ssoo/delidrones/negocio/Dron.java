@@ -17,10 +17,11 @@ public class Dron implements Runnable {
     private String dueno;
     private Double bateria;
     private String ubicacion;
-    private Boolean ava;
+    private Boolean busy;
     private boolean cargando;
     private LocalDato esteLocal;
     public Semaphore semaforo;
+    public Pedido order;
 
     public Dron(LocalDato esteLocal) {
         this.esteLocal = esteLocal;
@@ -28,25 +29,27 @@ public class Dron implements Runnable {
 
     public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
             @JsonProperty("battery") Double bateria,
-            @JsonProperty("availability") Boolean ava, Semaphore semaphore) {
+            @JsonProperty("busy") Boolean busy) {
         this.id = id;
         this.dueno = dueno;
         this.bateria = bateria;
-        this.ava = ava;
-        this.semaforo = semaphore;
+        this.busy = busy;
+        // this.semaforo = semaphore;
     }
 
     public String getDueno() {
         return dueno;
     }
 
-    public Boolean getAvailability() {
-        return true;
+    public void myOrder(Pedido order) {
+            this.order = order;
+
     }
 
     public void makeMeAvailable() throws InterruptedException {
         Thread.sleep(2000);
-        this.setAva(true);
+        this.setBusy(false);
+        this.myOrder(null);
     }
 
     public void setDueno(String dueno) {
@@ -61,37 +64,49 @@ public class Dron implements Runnable {
         this.bateria = bateria;
     }
 
-    public Boolean getAva() {
-        return ava;
+    public Boolean getBusy() {
+        return busy;
     }
 
-    public void setAva(Boolean ava) {
-        this.ava = ava;
+    public void setBusy(Boolean ava) {
+        this.busy = ava;
+    }
+
+    public UUID getId() {
+        return this.id;
     }
 
     @Override
     public void run() {
-        // Recorrer los pedidos cocinados ponerle un flag de already asignados
-        // demorar la entrega en base a un timeout fixed que viene en el archivo de
-        // pedidos
-        // aunque los pedidos se siguen cocinando
-        while (true) {
-            for (Pedido p : esteLocal.cookedOrders) {
-                try {
-                    semaforo.acquire();
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                if (p.getDelivered() == false) {
-                    System.out.println("Delivering order: " + p.getfoodName() + " with dron: " + this.id);
-                    p.setDelivered(true);
-                    esteLocal.cookedOrders.remove(p);
-                }
-                
-
-            }
-        }
+        // TODO Auto-generated method stub
 
     }
+
+    // @Override
+    // public void run() {
+    // // Recorrer los pedidos cocinados ponerle un flag de already asignados
+    // // demorar la entrega en base a un timeout fixed que viene en el archivo de
+    // // pedidos
+    // // aunque los pedidos se siguen cocinando
+    // while (true) {
+    // for (Pedido p : esteLocal.cookedOrders) {
+    // try {
+    // semaforo.acquire();
+    // } catch (InterruptedException e) {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    // //Si no se ha hecho el delivery y el dron está disponible
+    // if (p.getDelivered() == false && this.getBusy() == false) {
+    // System.out.println("Delivering order: " + p.getfoodName() + " with dron: " +
+    // this.id);
+    // p.setDelivered(true);
+    // Pedido cookedOrder = esteLocal.cookedOrders.remove();
+    // }
+    // //this.setBusy(true);
+
+    // }
+    // }
+
+    // }
 }

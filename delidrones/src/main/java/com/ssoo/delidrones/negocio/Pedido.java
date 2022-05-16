@@ -28,6 +28,8 @@ public class Pedido {
     private Boolean delivered;
     private String foodName;
     private Integer prepTime;
+    private Dron assignatedDron;
+    public Boolean assigned = false;
 
     public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") String foodName,
             @JsonProperty("origen") String origen, @JsonProperty("dist") int distancia,
@@ -112,6 +114,18 @@ public class Pedido {
 
     public void setPrepTime(Integer prepTime) {
         this.prepTime = prepTime;
+    }
+
+    public void assignDron(Dron thisDron){
+        assignatedDron = thisDron;
+    }
+
+    public Boolean getAssigned(){
+        return this.assigned;
+    }
+
+    public void setAssigned(Boolean as){
+        this.assigned = as;
     }
 
 }
