@@ -81,8 +81,8 @@ public class LocalDato implements Runnable {
             {
                 UUID id = UUID.randomUUID();
                 String[] linea = line.split(splitBy); // use comma as separator
-                System.out.println("Name=" + linea[0] + ", Adress=" + linea[1]
-                        + ", Order=" + linea[2]);
+                // System.out.println("Name=" + linea[0] + ", Adress=" + linea[1]
+                //         + ", Order=" + linea[2]);
                 boolean isStation = Boolean.parseBoolean(linea[2]);
                 stores.add(new Local(id, linea[0], linea[1], isStation));
             }
@@ -107,7 +107,7 @@ public class LocalDato implements Runnable {
                 String[] linea = line.split(splitBy); // use comma as separator
                 Double bat = Double.parseDouble(linea[1]);
                 //boolean busy = Boolean.parseBoolean(linea[2]);
-                System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat + " Busy: " + linea[1]);
+                //System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat + " Busy: " + linea[1]);
                 // Local thisLocal = selectThatLocal(linea[0]);
                 // System.out.println(thisLocal.getName());
                 // if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
@@ -138,8 +138,8 @@ public class LocalDato implements Runnable {
             {
                 UUID id = UUID.randomUUID();
                 String[] linea = line.split(splitBy); // use comma as separator
-                System.out.println("ID CLIENTE=" + linea[0] + ", Adress=" + linea[1]
-                        + ", Distancia=" + linea[2] + ", Local=" + linea[5]);
+                // System.out.println("ID CLIENTE=" + linea[0] + ", Adress=" + linea[1]
+                //         + ", Distancia=" + linea[2] + ", Local=" + linea[5]);
                 Integer dist = Integer.parseInt(linea[2]);
                 Integer prepTime = Integer.parseInt(linea[7]);
                 boolean delivered = Boolean.parseBoolean(linea[6]);

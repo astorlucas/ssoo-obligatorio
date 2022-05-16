@@ -25,7 +25,7 @@ public class Dron implements Runnable {
     }
 
     public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
-            @JsonProperty("battery") Double bateria, 
+            @JsonProperty("battery") Double bateria,
             @JsonProperty("availability") Boolean ava) {
         this.id = id;
         this.dueno = dueno;
@@ -37,11 +37,11 @@ public class Dron implements Runnable {
         return dueno;
     }
 
-    public Boolean getAvailability(){
+    public Boolean getAvailability() {
         return true;
     }
 
-    public void makeMeAvailable() throws InterruptedException{
+    public void makeMeAvailable() throws InterruptedException {
         Thread.sleep(2000);
         this.setAva(true);
     }
@@ -68,13 +68,19 @@ public class Dron implements Runnable {
 
     @Override
     public void run() {
-        //Recorrer los pedidos cocinados ponerle un flag de already asignados
-        //demorar la entrega en base a un timeout fixed que viene en el archivo de pedidos
-        //aunque los pedidos se siguen cocinando
-        for(Pedido p : esteLocal.cookedOrders){
-            System.out.println("Delivering order: " + this.id);
-        }
-        
-    }
+        // Recorrer los pedidos cocinados ponerle un flag de already asignados
+        // demorar la entrega en base a un timeout fixed que viene en el archivo de
+        // pedidos
+        // aunque los pedidos se siguen cocinando
+        while (true) {
+            for (Pedido p : esteLocal.cookedOrders) {
+                if (p.getDelivered() == false) {
+                    System.out.println("Delivering order: " + p.getfoodName());
+                }
+                p.setDelivered(true);
 
+            }
+        }
+
+    }
 }
