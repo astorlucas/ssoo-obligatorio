@@ -70,10 +70,10 @@ public class LocalCtrl {
         return localServicio.getAllPedidos();
     }
 
-    @RequestMapping(value = "/adddron", method = RequestMethod.POST)
-    public void addDron(@RequestBody Dron dron) {
-        localServicio.addDron(dron);
-    }
+    // @RequestMapping(value = "/adddron", method = RequestMethod.POST)
+    // public void addDron(@RequestBody Dron dron) {
+    //     localServicio.addDron(dron);
+    // }
 
     @RequestMapping(value = "/getdrones", method = RequestMethod.POST)
     public List<Dron> getAllDrones() {

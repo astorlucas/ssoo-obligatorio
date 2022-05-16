@@ -1,6 +1,7 @@
 package com.ssoo.delidrones;
 
 import java.util.Arrays;
+import java.util.UUID;
 import java.util.concurrent.Semaphore;
 
 import com.ssoo.delidrones.datos.ClienteDato;
@@ -23,25 +24,40 @@ public class DelidronesApplication {
 
 		SpringApplication.run(DelidronesApplication.class, args);
 
+		// Integer cantDrones = mainLocal.dronsThread.size();
+		Semaphore semDron = new Semaphore(0);
+
 		//Abren los locales
 		Local laPasiva = new Local(null, "la_Pasiva", "18_de_Julio_1123", true);
 		Local illMondo = new Local(null, "ill_Mondo", "18_de_Julio_1255", true);
-		LocalDato mainLocal = new LocalDato();
-		mainLocal.cargarLocales();
-		mainLocal.cargarPedidos();
-		mainLocal.cargarDrones();
+		//Locales encienden los drones
+		UUID id2 = UUID.randomUUID();
+		UUID id3 = UUID.randomUUID();
+		UUID id4 = UUID.randomUUID();
+		UUID id5 = UUID.randomUUID();
+		Thread laPasivaDron1 = new Thread(new Dron(id2, "lapasiva",70.0d,true, semDron));
+		Thread laPasivaDron2 = new Thread(new Dron(id3, "lapasiva",70.0d,true, semDron));
+		Thread illMondoDron1 = new Thread(new Dron(id4, "illmondodelapizza",70.0d,true, semDron));
+		Thread illMondoDron2 = new Thread(new Dron(id5, "illmondodelapizza",70.0d,true, semDron));
+		
 
-		// Integer cantDrones = mainLocal.dronsThread.size();
-		// Semaphore semDron = new Semaphore(cantDrones);
+		LocalDato mainLocal = new LocalDato();
+		//mainLocal.cargarLocales();
+		mainLocal.cargarPedidos();
+		//mainLocal.cargarDrones();
+
+		
 
 		//Se comienzan a cocinar los pedidos crudos
 		Thread cocinar = new Thread(new PrepararOrden(mainLocal));
 		cocinar.start();
 
-		//Se encienden los drones para que empiecen a repartir pedidos listos
-		for(Thread work : mainLocal.dronsThread){
-			work.start();
-		}
+		laPasivaDron1.start();
+		laPasivaDron2.start();
+		illMondoDron1.start();
+		illMondoDron2.start();
+		semDron.release(1);
+		
 
 		// Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
 		// miHilo.start();

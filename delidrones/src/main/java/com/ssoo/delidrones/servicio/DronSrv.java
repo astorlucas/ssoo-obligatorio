@@ -24,9 +24,9 @@ public class DronSrv {
         this.dronDato = dron;
     }
 
-    public int addDron(Dron dron){
-        return dronDato.insertDron(dron);
-    }
+    // public int addDron(Dron dron){
+    //     return dronDato.insertDron(dron);
+    // }
 
     public ArrayList<Dron> getAllDrones(){
         return dronDato.selectAllDrones();

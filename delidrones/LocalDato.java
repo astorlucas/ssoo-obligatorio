@@ -37,11 +37,11 @@ public class LocalDato implements Runnable {
 
     // Esto es para probar añadiendo directamente en la lista que a mi me interesa
     // ir recorriendo.
-    // public int insertDron(Dron dron) {
-    //     UUID id = UUID.randomUUID();
-    //     drons.add(new Dron(id, dron.getDueno(), dron.getBateria(), dron.getAva()));
-    //     return 1;
-    // }
+    public int insertDron(Dron dron) {
+        UUID id = UUID.randomUUID();
+        drons.add(new Dron(id, dron.getDueno(), dron.getBateria(), dron.getAva()));
+        return 1;
+    }
 
     public int insertPedido(Pedido cli) {
         UUID id = UUID.randomUUID();
@@ -68,62 +68,62 @@ public class LocalDato implements Runnable {
 
     }
 
-    // public void cargarLocales() { // o run() si es un thread
-    //     String line = "";
-    //     String splitBy = ",";
-    //     try {
-    //         // parsing a CSV file into BufferedReader class constructor
-    //         File file = new File(
-    //                 "./src/main/resources/local.csv");
-    //         FileReader fr = new FileReader(file);
-    //         BufferedReader br = new BufferedReader(fr);
-    //         while ((line = br.readLine()) != null) // returns a Boolean value
-    //         {
-    //             UUID id = UUID.randomUUID();
-    //             String[] linea = line.split(splitBy); // use comma as separator
-    //             // System.out.println("Name=" + linea[0] + ", Adress=" + linea[1]
-    //             //         + ", Order=" + linea[2]);
-    //             boolean isStation = Boolean.parseBoolean(linea[2]);
-    //             stores.add(new Local(id, linea[0], linea[1], isStation));
-    //         }
-    //         br.close();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
+    public void cargarLocales() { // o run() si es un thread
+        String line = "";
+        String splitBy = ",";
+        try {
+            // parsing a CSV file into BufferedReader class constructor
+            File file = new File(
+                    "./src/main/resources/local.csv");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            while ((line = br.readLine()) != null) // returns a Boolean value
+            {
+                UUID id = UUID.randomUUID();
+                String[] linea = line.split(splitBy); // use comma as separator
+                // System.out.println("Name=" + linea[0] + ", Adress=" + linea[1]
+                //         + ", Order=" + linea[2]);
+                boolean isStation = Boolean.parseBoolean(linea[2]);
+                stores.add(new Local(id, linea[0], linea[1], isStation));
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    // public void cargarDrones() { // o run() si es un thread
-    //     String line = "";
-    //     String splitBy = ",";
-    //     try {
-    //         // parsing a CSV file into BufferedReader class constructor
-    //         File file = new File(
-    //                 "./src/main/resources/dron.csv");
-    //         FileReader fr = new FileReader(file);
-    //         BufferedReader br = new BufferedReader(fr);
-    //         while ((line = br.readLine()) != null) // returns a Boolean value
-    //         {
-    //             UUID id = UUID.randomUUID();
-    //             String[] linea = line.split(splitBy); // use comma as separator
-    //             Double bat = Double.parseDouble(linea[1]);
-    //             //boolean busy = Boolean.parseBoolean(linea[2]);
-    //             //System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat + " Busy: " + linea[1]);
-    //             // Local thisLocal = selectThatLocal(linea[0]);
-    //             // System.out.println(thisLocal.getName());
-    //             // if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
-    //             // thisLocal.drones.add(new Dron(id, linea[0], bat));
-    //             // }
+    public void cargarDrones() { // o run() si es un thread
+        String line = "";
+        String splitBy = ",";
+        try {
+            // parsing a CSV file into BufferedReader class constructor
+            File file = new File(
+                    "./src/main/resources/dron.csv");
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            while ((line = br.readLine()) != null) // returns a Boolean value
+            {
+                UUID id = UUID.randomUUID();
+                String[] linea = line.split(splitBy); // use comma as separator
+                Double bat = Double.parseDouble(linea[1]);
+                //boolean busy = Boolean.parseBoolean(linea[2]);
+                //System.out.println("Dueño DRON=" + linea[0] + ", Battery=" + bat + " Busy: " + linea[1]);
+                // Local thisLocal = selectThatLocal(linea[0]);
+                // System.out.println(thisLocal.getName());
+                // if (thisLocal != null && thisLocal.getName().equals(linea[0])) {
+                // thisLocal.drones.add(new Dron(id, linea[0], bat));
+                // }
                 
-    //             drons.add(new Dron(id, linea[0], bat, true));
-    //             dronsThread.add(new Thread(new Dron(id, linea[0], bat, true)));
+                drons.add(new Dron(id, linea[0], bat, true));
+                dronsThread.add(new Thread(new Dron(id, linea[0], bat, true)));
 
-    //         }
-    //         br.close();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    // }
+    }
 
     public void cargarPedidos() { // o run() si es un thread
         String line = "";

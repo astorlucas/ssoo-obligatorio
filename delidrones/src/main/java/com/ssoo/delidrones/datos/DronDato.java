@@ -33,11 +33,11 @@ public class DronDato implements Runnable {
 
     // public ArrayList<String> historyDeliver = new ArrayList<>();
 
-    public int insertDron(Dron dron) {
-        UUID id = UUID.randomUUID();
-        drons.add(new Dron(id, dron.getDueno(), dron.getBateria(), dron.getAva()));
-        return 1;
-    }
+    // public int insertDron(Dron dron) {
+    //     UUID id = UUID.randomUUID();
+    //     drons.add(new Dron(id, dron.getDueno(), dron.getBateria(), dron.getAva()));
+    //     return 1;
+    // }
 
     public ArrayList<Dron> selectAllDrones() {
         return drons;

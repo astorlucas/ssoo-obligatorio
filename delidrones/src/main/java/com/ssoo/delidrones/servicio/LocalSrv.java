@@ -48,9 +48,9 @@ public class LocalSrv {
         return localDato.selectAllPedidos();
     }
 
-    public int addDron(Dron dron) {
-        return localDato.insertDron(dron);
-    }
+    // public int addDron(Dron dron) {
+    //     return localDato.insertDron(dron);
+    // }
 
     public List<Dron> getAllDrones() {
         return localDato.selectAllDrones();

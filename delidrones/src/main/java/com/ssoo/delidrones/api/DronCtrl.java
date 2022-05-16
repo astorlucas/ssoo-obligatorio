@@ -22,10 +22,10 @@ public class DronCtrl {
         this.dronDato = dronDato;
     }
 
-    @PostMapping
-    public void addDron(@RequestBody Dron dron){
-        dronServicio.addDron(dron);
-    }
+    // @PostMapping
+    // public void addDron(@RequestBody Dron dron){
+    //     dronServicio.addDron(dron);
+    // }
 
     @GetMapping
     public ArrayList<Dron> getAllDrones(){

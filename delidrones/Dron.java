@@ -6,7 +6,6 @@ import com.ssoo.delidrones.datos.LocalDato;
 import lombok.*;
 
 import java.util.UUID;
-import java.util.concurrent.Semaphore;
 
 @Getter
 @Setter
@@ -20,7 +19,6 @@ public class Dron implements Runnable {
     private Boolean ava;
     private boolean cargando;
     private LocalDato esteLocal;
-    public Semaphore semaforo;
 
     public Dron(LocalDato esteLocal) {
         this.esteLocal = esteLocal;
@@ -28,12 +26,11 @@ public class Dron implements Runnable {
 
     public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
             @JsonProperty("battery") Double bateria,
-            @JsonProperty("availability") Boolean ava, Semaphore semaphore) {
+            @JsonProperty("availability") Boolean ava) {
         this.id = id;
         this.dueno = dueno;
         this.bateria = bateria;
         this.ava = ava;
-        this.semaforo = semaphore;
     }
 
     public String getDueno() {
@@ -77,12 +74,6 @@ public class Dron implements Runnable {
         // aunque los pedidos se siguen cocinando
         while (true) {
             for (Pedido p : esteLocal.cookedOrders) {
-                try {
-                    semaforo.acquire();
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
                 if (p.getDelivered() == false) {
                     System.out.println("Delivering order: " + p.getfoodName() + " with dron: " + this.id);
                     p.setDelivered(true);
