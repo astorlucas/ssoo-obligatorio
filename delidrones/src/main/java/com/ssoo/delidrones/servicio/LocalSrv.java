@@ -34,29 +34,20 @@ public class LocalSrv {
         return LocalDato.pedidoYDron;
     }
 
-    public ArrayList<Dron> dronesDeLocal(String name) {
-        return LocalDato.dronesDeLocal(name);
-    }
 
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
     public int addPedido(Pedido pedido) {
         return localDato.insertPedido(pedido);
+    }
+
+    public int addDron(Dron dron) {
+        return localDato.insertDron(dron);
     }
 
     public List<Pedido> getAllPedidos() {
         return localDato.selectAllPedidos();
     }
 
-    // public int addDron(Dron dron) {
-    //     return localDato.insertDron(dron);
-    // }
-
     public List<Dron> getAllDrones() {
         return localDato.selectAllDrones();
     }
-
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
-
 }

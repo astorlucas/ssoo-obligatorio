@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.Semaphore;
 
-import com.ssoo.delidrones.datos.ClienteDato;
 import com.ssoo.delidrones.datos.DronDato;
 import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.datos.PedidoDato;
@@ -23,60 +22,22 @@ public class DelidronesApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(DelidronesApplication.class, args);
-
-		// Integer cantDrones = mainLocal.dronsThread.size();
+;
 		Semaphore semDron = new Semaphore(0);
 
 		//Abren los locales
-		Local laPasiva = new Local(null, "la_Pasiva", "18_de_Julio_1123", true);
-		Local illMondo = new Local(null, "ill_Mondo", "18_de_Julio_1255", true);
-		//Locales encienden los drones
-		// UUID id2 = UUID.randomUUID();
-		// UUID id3 = UUID.randomUUID();
-		// UUID id4 = UUID.randomUUID();
-		// UUID id5 = UUID.randomUUID();
-		// Thread laPasivaDron1 = new Thread(new Dron(id2, "lapasiva",70.0d,false, semDron));
-		// Thread laPasivaDron2 = new Thread(new Dron(id3, "lapasiva",70.0d,false, semDron));
-		// Thread illMondoDron1 = new Thread(new Dron(id4, "illmondodelapizza",70.0d,false, semDron));
-		// Thread illMondoDron2 = new Thread(new Dron(id5, "illmondodelapizza",70.0d,false, semDron));
-		
-		
-
 		LocalDato mainLocal = new LocalDato();
 		//mainLocal.cargarLocales();
 		mainLocal.cargarPedidos();
 		mainLocal.cargarDrones();
 		
-		
-		
-
 		//Se comienzan a cocinar los pedidos crudos
 		Thread cocinar = new Thread(new PrepararOrden(mainLocal,semDron));
 		cocinar.start();
-		
+		//Se reparten pedidos cocinados a demanda
 		Thread repartidorHilo1 = new Thread(new RepartirPedidos(semDron, mainLocal));
-		Thread repartidorHilo2 = new Thread(new RepartirPedidos(semDron, mainLocal));
-		Thread repartidorHilo3 = new Thread(new RepartirPedidos(semDron, mainLocal));
 		repartidorHilo1.start();
-		//repartidorHilo2.start();
-		//repartidorHilo3.start();
-
-
-		// laPasivaDron1.start();
-		// laPasivaDron2.start();
-		// illMondoDron1.start();
-		// illMondoDron2.start();
 		
-
-		// Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
-		// miHilo.start();
-
-		// mainLocal.procesarPedidos();
-
-		// Local illMondo = mainLocal.selectThatLocal("illmondodelapizza");
-		// Local laPasiva = mainLocal.selectThatLocal("lapasiva");
-		// System.out.println("Drones ill: "+ illMondo.drones.toString());
-		// System.out.println("Drones lapa: "+ laPasiva.drones.toString());
 
 	}
 

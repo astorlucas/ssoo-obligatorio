@@ -22,15 +22,12 @@ public class RepartirPedidos implements Runnable {
         // demorar la entrega en base a un timeout fixed que viene en el archivo de
         // pedidos
         // aunque los pedidos se siguen cocinando
-
         while (true) {
-            System.out.println("TAMANO: " + esteLocal.cookedOrders.size());
             // Asigno los pedidos a los drones
             for (Dron dron : esteLocal.drons) {
                 try {
                     semaforo.acquire();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 
@@ -39,7 +36,6 @@ public class RepartirPedidos implements Runnable {
                 for (Pedido pedido : esteLocal.cookedOrders) {
                     if (pedido.getAssigned() == false && dron.order == null) {
                         dron.myOrder(pedido);
-                        // esteLocal.cookedOrders.remove(pedido);
                         pedido.setAssigned(true);
                         dron.setBusy(true);
                         System.out
@@ -54,31 +50,11 @@ public class RepartirPedidos implements Runnable {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 dron.myOrder(null);
                 dron.setBusy(false);
             }
-            // for (Pedido p : esteLocal.cookedOrders) {
-            // try {
-            // semaforo.acquire();
-            // } catch (InterruptedException e) {
-            // // TODO Auto-generated catch block
-            // e.printStackTrace();
-            // }
-            // for (Dron d : esteLocal.drons) {
-
-            // // Si no se ha hecho el delivery y el dron está disponible
-            // if (p.getDelivered() == false) && d.getBusy() == false) {
-            // System.out.println("Delivering order: " + p.getfoodName() + " with dron: " +
-            // d.getId());
-            // p.setDelivered(true);
-            // // Pedido cookedOrder = esteLocal.cookedOrders.remove();
-            // }
-            // }
-
-            // }
         }
 
     }

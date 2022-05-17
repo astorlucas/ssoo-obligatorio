@@ -12,7 +12,7 @@ import java.util.concurrent.Semaphore;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dron implements Runnable {
+public class Dron {
     private UUID id;
     private String dueno;
     private Double bateria;
@@ -76,37 +76,4 @@ public class Dron implements Runnable {
         return this.id;
     }
 
-    @Override
-    public void run() {
-        // TODO Auto-generated method stub
-
-    }
-
-    // @Override
-    // public void run() {
-    // // Recorrer los pedidos cocinados ponerle un flag de already asignados
-    // // demorar la entrega en base a un timeout fixed que viene en el archivo de
-    // // pedidos
-    // // aunque los pedidos se siguen cocinando
-    // while (true) {
-    // for (Pedido p : esteLocal.cookedOrders) {
-    // try {
-    // semaforo.acquire();
-    // } catch (InterruptedException e) {
-    // // TODO Auto-generated catch block
-    // e.printStackTrace();
-    // }
-    // //Si no se ha hecho el delivery y el dron está disponible
-    // if (p.getDelivered() == false && this.getBusy() == false) {
-    // System.out.println("Delivering order: " + p.getfoodName() + " with dron: " +
-    // this.id);
-    // p.setDelivered(true);
-    // Pedido cookedOrder = esteLocal.cookedOrders.remove();
-    // }
-    // //this.setBusy(true);
-
-    // }
-    // }
-
-    // }
 }

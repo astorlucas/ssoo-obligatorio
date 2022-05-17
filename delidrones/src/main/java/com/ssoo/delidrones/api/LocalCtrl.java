@@ -51,18 +51,9 @@ public class LocalCtrl {
         return localServicio.getProcesados();
     }
 
-    @RequestMapping(value = "/drones", method = RequestMethod.GET)
-    public ArrayList<Dron> dronesDeLocal(@RequestBody String name) {
-        return LocalDato.dronesDeLocal(name);
-    }
-
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
     @RequestMapping(value = "/addpedido", method = RequestMethod.POST)
     public void addPedido(@RequestBody Pedido pedido) {
         localServicio.addPedido(pedido);
-        //Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
-		//miHilo.start();
     }
 
     @RequestMapping(value = "/getpedidos", method = RequestMethod.GET)
@@ -70,16 +61,14 @@ public class LocalCtrl {
         return localServicio.getAllPedidos();
     }
 
-    // @RequestMapping(value = "/adddron", method = RequestMethod.POST)
-    // public void addDron(@RequestBody Dron dron) {
-    //     localServicio.addDron(dron);
-    // }
+    @RequestMapping(value = "/adddron", method = RequestMethod.POST)
+    public void addDron(@RequestBody Dron dron) {
+        localServicio.addDron(dron);
+    }
 
     @RequestMapping(value = "/getdrones", method = RequestMethod.POST)
     public List<Dron> getAllDrones() {
         return localServicio.getAllDrones();
     }
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
 
 }
