@@ -36,7 +36,7 @@ public class Local {
         this.adress = adress;
         this.isStation = isStation;
     }
-
+    //cambios
     public UUID getId() {
         return this.id;
     }
