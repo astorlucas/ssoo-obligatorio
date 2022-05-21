@@ -1,6 +1,5 @@
 package com.ssoo.delidrones.datos;
 
-import com.ssoo.delidrones.negocio.Cliente;
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Pedido;
 

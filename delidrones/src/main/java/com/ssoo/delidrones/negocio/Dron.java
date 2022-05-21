@@ -2,6 +2,8 @@ package com.ssoo.delidrones.negocio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssoo.delidrones.datos.LocalDato;
+import com.ssoo.delidrones.procesos.Watched;
+import com.ssoo.delidrones.utils.UtilsClass;
 
 import lombok.*;
 
@@ -12,68 +14,46 @@ import java.util.concurrent.Semaphore;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dron {
-    private UUID id;
-    private String dueno;
-    private Double bateria;
-    private String ubicacion;
-    private Boolean busy;
-    private boolean cargando;
-    private LocalDato esteLocal;
-    public Semaphore semaforo;
-    public Pedido order;
+public class Dron extends Watched {
 
-    public Dron(LocalDato esteLocal) {
-        this.esteLocal = esteLocal;
+    public static final String DISPONIBLE = "disponible";
+    public static final String HACIA_EL_RESTAURANT = "hacia-restaurant";
+    public static final String HACIA_EL_DESTINO = "hacia-destinatario";
+    public static final String PEDIDO_ENTREGADO = "pedido-entregado";
+
+    public Pedido pedido;
+
+    public Dron(String id, String state) {
+        super(id, state);
     }
 
-    public Dron(@JsonProperty("id") UUID id, @JsonProperty("dueno") String dueno,
-            @JsonProperty("battery") Double bateria,
-            @JsonProperty("busy") Boolean busy) {
-        this.id = id;
-        this.dueno = dueno;
-        this.bateria = bateria;
-        this.busy = busy;
-        // this.semaforo = semaphore;
+    @Override
+    public void setLocal(Local thisLocal) {
+        super.setLocal(thisLocal);
+
+        this.mainLocal.changeState(this, Dron.DISPONIBLE);
     }
 
-    public String getDueno() {
-        return dueno;
+    public void run() {
+
+        this.mainLocal.changeState(this, HACIA_EL_RESTAURANT);
+
+        UtilsClass.sleepRand(2, 6);
+
+        this.mainLocal.changeState(this, HACIA_EL_DESTINO);
+
+        UtilsClass.sleepRand(2, 6);
+
+        this.mainLocal.changeState(this, PEDIDO_ENTREGADO);
+
+        this.pedido = null;
+
+        this.mainLocal.changeState(this, DISPONIBLE);
+
     }
 
-    public void myOrder(Pedido order) {
-            this.order = order;
-
-    }
-
-    public void makeMeAvailable() throws InterruptedException {
-        Thread.sleep(2000);
-        this.setBusy(false);
-        this.myOrder(null);
-    }
-
-    public void setDueno(String dueno) {
-        this.dueno = dueno;
-    }
-
-    public Double getBateria() {
-        return bateria;
-    }
-
-    public void setBateria(Double bateria) {
-        this.bateria = bateria;
-    }
-
-    public Boolean getBusy() {
-        return busy;
-    }
-
-    public void setBusy(Boolean ava) {
-        this.busy = ava;
-    }
-
-    public UUID getId() {
-        return this.id;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
 }

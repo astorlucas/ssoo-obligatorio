@@ -1,6 +1,9 @@
 package com.ssoo.delidrones.negocio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ssoo.delidrones.procesos.Watched;
+import com.ssoo.delidrones.utils.UtilsClass;
+
 import lombok.*;
 
 import java.io.BufferedReader;
@@ -16,116 +19,29 @@ import java.util.concurrent.TimeUnit;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Pedido {
+public class Pedido extends Watched {
 
-    private UUID id;
-    private List<Dron> drones;
-    private String origen;
-    private int distancia;
-    private String destino;
-    private String horaFin;
-    private String local;
-    private Boolean delivered;
-    private String foodName;
-    private Integer prepTime;
-    private Dron assignatedDron;
-    public Boolean assigned = false;
+    public static final String INGRESADO = "ingresado";
+    public static final String EN_PROCESO = "en-proceso";
+    public static final String PREPARADO = "preparado";
 
-    public Pedido(@JsonProperty("id") UUID id, @JsonProperty("cli") String foodName,
-            @JsonProperty("origen") String origen, @JsonProperty("dist") int distancia,
-            @JsonProperty("destino") String destino, @JsonProperty("fin") String horaFin,
-            @JsonProperty("local") String local,
-            @JsonProperty("done") Boolean delivered,
-            @JsonProperty("time") Integer prepTime) {
-        this.id = id;
-        this.foodName = foodName;
-        this.origen = origen;
-        this.distancia = distancia;
-        this.destino = destino;
-        this.horaFin = horaFin;
-        this.local = local;
-        this.delivered = delivered;
-        this.prepTime = prepTime;
+    public Pedido(String id, String state) {
+        super(id, state);
     }
 
-    public UUID getId() {
-        return id;
-    }
+    @Override
+    public void run() {
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+        this.mainLocal.changeState(this, INGRESADO);
 
-    public String getfoodName() {
-        return foodName;
-    }
+        UtilsClass.sleepRand(2, 6);
 
-    public List<Dron> getDrones() {
-        return drones;
-    }
+        this.mainLocal.changeState(this, EN_PROCESO);
 
-    public void setDrones(List<Dron> drones) {
-        this.drones = drones;
-    }
+        UtilsClass.sleepRand(2, 6);
 
-    public String getOrigen() {
-        return origen;
-    }
+        this.mainLocal.changeState(this, PREPARADO);
 
-    public int getDistancia() {
-        return distancia;
-    }
-
-    public void setDistancia(int distancia) {
-        this.distancia = distancia;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public String getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(String horaFin) {
-        this.horaFin = horaFin;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public Boolean getDelivered() {
-        return delivered;
-    }
-
-    public void setDelivered(Boolean delivered) {
-        this.delivered = delivered;
-    }
-
-    public Integer getPrepTime() {
-        return prepTime;
-    }
-
-    public void setPrepTime(Integer prepTime) {
-        this.prepTime = prepTime;
-    }
-
-    public void assignDron(Dron thisDron){
-        assignatedDron = thisDron;
-    }
-
-    public Boolean getAssigned(){
-        return this.assigned;
-    }
-
-    public void setAssigned(Boolean as){
-        this.assigned = as;
     }
 
 }

@@ -30,84 +30,84 @@ public class LocalDato {
 
     public static HashMap<String, String> pedidoYDron = new HashMap<>();
 
-    public int insertLocal(Local local) {
-        UUID id = UUID.randomUUID();
-        lista.add(new Local(id, local.getName(), local.getAdress(), local.isStation()));
-        return 1;
-    }
+    // public int insertLocal(Local local) {
+    //     UUID id = UUID.randomUUID();
+    //     lista.add(new Local(id, local.getName(), local.getAdress(), local.isStation()));
+    //     return 1;
+    // }
 
-    public int insertPedido(Pedido cli) {
-        UUID id = UUID.randomUUID();
-        pedidos.add(new Pedido(id, cli.getfoodName(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
-                cli.getHoraFin(), cli.getLocal(), cli.getDelivered(), cli.getPrepTime()));
-        return 1;
-    }
+    // public int insertPedido(Pedido cli) {
+    //     UUID id = UUID.randomUUID();
+    //     pedidos.add(new Pedido(id, cli.getfoodName(), cli.getDestino(), cli.getDistancia(), cli.getOrigen(),
+    //             cli.getHoraFin(), cli.getLocal(), cli.getDelivered(), cli.getPrepTime()));
+    //     return 1;
+    // }
 
-    public int insertDron(Dron cli) {
-        UUID id = UUID.randomUUID();
-        drons.add(new Dron(this));
-        return 1;
-    }
+    // public int insertDron(Dron cli) {
+    //     UUID id = UUID.randomUUID();
+    //     drons.add(new Dron(this));
+    //     return 1;
+    // }
 
-    public ArrayList<Local> selectAllLocals() {
-        return lista;
-    }
+    // public ArrayList<Local> selectAllLocals() {
+    //     return lista;
+    // }
 
    
-    public void cargarDrones() {
-        String line = "";
-        String splitBy = ",";
-        try {
+    // public void cargarDrones() {
+    //     String line = "";
+    //     String splitBy = ",";
+    //     try {
 
-            File file = new File(
-                    "./src/main/resources/dron.csv");
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            while ((line = br.readLine()) != null) {
-                UUID id = UUID.randomUUID();
-                String[] linea = line.split(splitBy);
-                Double bat = Double.parseDouble(linea[1]);
-                drons.add(new Dron(id, linea[0], bat, false));
+    //         File file = new File(
+    //                 "./src/main/resources/dron.csv");
+    //         FileReader fr = new FileReader(file);
+    //         BufferedReader br = new BufferedReader(fr);
+    //         while ((line = br.readLine()) != null) {
+    //             UUID id = UUID.randomUUID();
+    //             String[] linea = line.split(splitBy);
+    //             Double bat = Double.parseDouble(linea[1]);
+    //             drons.add(new Dron(id, linea[0], bat, false));
 
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    //         }
+    //         br.close();
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
 
-    }
+    // }
 
-    public void cargarPedidos() {
-        String line = "";
-        String splitBy = ",";
-        try {
-            File file = new File(
-                    "./src/main/resources/pedido.csv");
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            while ((line = br.readLine()) != null) {
-                UUID id = UUID.randomUUID();
-                String[] linea = line.split(splitBy);
-                Integer dist = Integer.parseInt(linea[2]);
-                Integer prepTime = Integer.parseInt(linea[7]);
-                boolean delivered = Boolean.parseBoolean(linea[6]);
-                pedidos.add(
-                        new Pedido(id, linea[0], linea[1], dist, linea[3], linea[4], linea[5], delivered, prepTime));
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    // public void cargarPedidos() {
+    //     String line = "";
+    //     String splitBy = ",";
+    //     try {
+    //         File file = new File(
+    //                 "./src/main/resources/pedido.csv");
+    //         FileReader fr = new FileReader(file);
+    //         BufferedReader br = new BufferedReader(fr);
+    //         while ((line = br.readLine()) != null) {
+    //             UUID id = UUID.randomUUID();
+    //             String[] linea = line.split(splitBy);
+    //             Integer dist = Integer.parseInt(linea[2]);
+    //             Integer prepTime = Integer.parseInt(linea[7]);
+    //             boolean delivered = Boolean.parseBoolean(linea[6]);
+    //             pedidos.add(
+    //                     new Pedido(id, linea[0], linea[1], dist, linea[3], linea[4], linea[5], delivered, prepTime));
+    //         }
+    //         br.close();
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
 
-    }
+    // }
 
 
-    public List<Pedido> selectAllPedidos() {
-        return pedidos;
-    }
+    // public List<Pedido> selectAllPedidos() {
+    //     return pedidos;
+    // }
 
-    public List<Dron> selectAllDrones() {
-        return drons;
-    }
+    // public List<Dron> selectAllDrones() {
+    //     return drons;
+    // }
 
 }
