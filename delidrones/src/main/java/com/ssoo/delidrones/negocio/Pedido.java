@@ -24,9 +24,11 @@ public class Pedido extends Watched {
     public static final String INGRESADO = "ingresado";
     public static final String EN_PROCESO = "en-proceso";
     public static final String PREPARADO = "preparado";
+    public static int prepTime;
 
-    public Pedido(String id, String state) {
+    public Pedido(String id, String state, int prepTime) {
         super(id, state);
+        this.prepTime = prepTime;
     }
 
     @Override
@@ -42,6 +44,10 @@ public class Pedido extends Watched {
 
         this.mainLocal.changeState(this, PREPARADO);
 
+    }
+
+    public int getPrepTime(){
+        return this.prepTime;
     }
 
 }

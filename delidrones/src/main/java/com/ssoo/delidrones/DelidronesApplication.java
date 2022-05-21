@@ -37,15 +37,19 @@ public class DelidronesApplication {
 		// Thread repartidorHilo1 = new Thread(new RepartirPedidos(semDron, mainLocal));
 		// repartidorHilo1.start();
 
+		
+		//Abrimos el local
 		Local mainLocal = new Local();
 
+		//Se cargan los drones
 		for (int d = 1; d <= 10; d++) {
 			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
 		}
 
-		RecibirPedidos clientes = new RecibirPedidos(20, mainLocal);
+		//Se comienzan a recibir pedidos
+		RecibirPedidos ourOrders = new RecibirPedidos(5, mainLocal);
 
-		UtilsClass.run(clientes);
+		UtilsClass.run(ourOrders);
 		UtilsClass.run(mainLocal);
 
 	}
