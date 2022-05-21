@@ -15,48 +15,39 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LocalSrv {
-    private final LocalDato localDato;
+    // private final LocalDato localDato;
 
-    @Autowired
-    public LocalSrv(@Qualifier("local") LocalDato localDato) {
-        this.localDato = localDato;
-    }
+    // @Autowired
+    // public LocalSrv(@Qualifier("local") LocalDato localDato) {
+    //     this.localDato = localDato;
+    // }
 
-    public int addLocal(Local local) {
-        return localDato.insertLocal(local);
-    }
+    // public int addLocal(Local local) {
+    //     return localDato.insertLocal(local);
+    // }
 
-    public ArrayList<Local> getAllLocals() {
-        return localDato.selectAllLocals();
-    }
+    // public ArrayList<Local> getAllLocals() {
+    //     return localDato.selectAllLocals();
+    // }
 
-    public HashMap<String, String> getProcesados() {
-        return LocalDato.pedidoYDron;
-    }
+    // public HashMap<String, String> getProcesados() {
+    //     return LocalDato.pedidoYDron;
+    // }
 
-    public ArrayList<Dron> dronesDeLocal(String name) {
-        return LocalDato.dronesDeLocal(name);
-    }
 
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
-    public int addPedido(Pedido pedido) {
-        return localDato.insertPedido(pedido);
-    }
-
-    public List<Pedido> getAllPedidos() {
-        return localDato.selectAllPedidos();
-    }
+    // public int addPedido(Pedido pedido) {
+    //     return localDato.insertPedido(pedido);
+    // }
 
     // public int addDron(Dron dron) {
     //     return localDato.insertDron(dron);
     // }
 
-    public List<Dron> getAllDrones() {
-        return localDato.selectAllDrones();
-    }
+    // public List<Pedido> getAllPedidos() {
+    //     return localDato.selectAllPedidos();
+    // }
 
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
-
+    // public List<Dron> getAllDrones() {
+    //     return localDato.selectAllDrones();
+    // }
 }

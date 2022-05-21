@@ -17,18 +17,18 @@ public class PrepararOrden implements Runnable{
 
     @Override
     public void run() {
-        for(Pedido p : esteLocal.pedidos){
-            Integer relativeTime = p.getPrepTime()*1;
-            try {
-                Thread.sleep(relativeTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("The food " +p.getfoodName() + " is finished and added to the queue");
-            esteLocal.cookedOrders.add(p);
-            semaforo.release(1);
-            //After it is finished, it is added done for delivery
-        }
+        // for(Pedido p : esteLocal.pedidos){
+        //     Integer relativeTime = p.getPrepTime()*1;
+        //     try {
+        //         Thread.sleep(relativeTime);
+        //     } catch (InterruptedException e) {
+        //         e.printStackTrace();
+        //     }
+        //     System.out.println("The food " +p.getfoodName() + " is finished and added to the queue");
+        //     esteLocal.cookedOrders.add(p);
+        //     semaforo.release(1);
+        //     //After it is finished, it is added done for delivery
+        // }
         
     }
     

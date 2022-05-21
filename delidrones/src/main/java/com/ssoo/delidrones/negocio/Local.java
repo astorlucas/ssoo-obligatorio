@@ -5,9 +5,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ssoo.delidrones.procesos.Watched;
+import com.ssoo.delidrones.utils.UtilsClass;
 
 import lombok.*;
 
@@ -16,55 +20,99 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Local {
+public class Local implements Runnable {
 
-    private UUID id;
-    private String name;
-    private String adress;
-    private boolean isStation;
-    public static ArrayList<Pedido> orders = new ArrayList<>();
-    public static ArrayList<Dron> drones = new ArrayList<>();
-    
+    private Queue<Dron> drones = new LinkedList<Dron>();
+    private Queue<Pedido> pedidos = new LinkedList<Pedido>();
+    private int pedidosIngresados = 0;
 
-    public Local(@JsonProperty("id") UUID id, 
-    @JsonProperty("name") String name,
-    @JsonProperty("adress") String adress,
-    @JsonProperty("station") boolean isStation){
+    public void changeState(Dron o, String s) {
+        if (Dron.DISPONIBLE.equals(s)) {
+            print("Dron " + o.id, s);
 
-        this.id = id;
-        this.name = name;
-        this.adress = adress;
-        this.isStation = isStation;
+            this.drones.add(o);
+        } else {
+            if (Dron.PEDIDO_ENTREGADO.equals(s)) {
+                this.pedidosIngresados--;
+            }
+
+            print("Dron " + o.id, s + " pedido " + o.pedido.id);
+        }
     }
+
+    public void changeState(Pedido o, String s) {
+        if (Pedido.INGRESADO.equals(s)) {
+            this.pedidosIngresados++;
+        } else if (Pedido.PREPARADO.equals(s)) {
+            this.pedidos.add(o);
+        }
+
     //cambios
     public UUID getId() {
         return this.id;
     }
 
-    public String getName() {
-        return name;
+    public void addDron(Dron dron) {
+        dron.setLocal(this);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void addPedido(Pedido pedido) {
+        pedido.setLocal(this);
     }
 
-    public String getAdress() {
-        return adress;
+    public void run() {
+        System.out.println("# Inicia la jornada");
+
+        while (!this.hasPedidosIngresados()) {
+            UtilsClass.sleep(2);
+        }
+
+        while (this.hasPedidosIngresados() || this.hasPedidos()) {
+
+            UtilsClass.sleep(5);
+
+            this.procesarPedidos();
+
+        }
+
+        while (this.hasPedidosIngresados()) {
+            UtilsClass.sleep(2);
+        }
+
+        System.out.println("# Finaliz� la jornada");
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    private boolean procesarPedidos() {
+
+        while (this.hasDronAndPedido()) {
+            Dron dron = this.drones.poll();
+            Pedido pedido = this.pedidos.poll();
+
+            dron.setPedido(pedido);
+
+            UtilsClass.run(dron);
+        }
+
+        return true;
     }
 
-    public boolean isStation() {
-        return isStation;
+    public boolean hasDronAndPedido() {
+        return this.hasDrones() && this.hasPedidos();
     }
 
-    public void setStation(boolean isStation) {
-        this.isStation = isStation;
+    public boolean hasDrones() {
+        return !this.drones.isEmpty();
     }
 
-    
-    
+    public boolean hasPedidos() {
+        return !this.pedidos.isEmpty();
+    }
+
+    public boolean hasPedidosIngresados() {
+        return this.pedidosIngresados > 0;
+    }
+
+    public void print(String lbl, String msg) {
+        System.out.println(String.format("%-10s - %-3s - %s", lbl, this.pedidosIngresados, msg));
+    }
 }

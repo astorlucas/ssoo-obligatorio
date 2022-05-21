@@ -23,63 +23,52 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LocalCtrl {
 
-    private final LocalSrv localServicio;
+    // private final LocalSrv localServicio;
 
-    @Autowired
-    public LocalCtrl(LocalSrv localServicio) {
-        this.localServicio = localServicio;
-    }
+    // @Autowired
+    // public LocalCtrl(LocalSrv localServicio) {
+    //     this.localServicio = localServicio;
+    // }
 
-    @PostMapping
-    public void addLocal(@RequestBody Local local) {
-        localServicio.addLocal(local);
-    }
+    // @PostMapping
+    // public void addLocal(@RequestBody Local local) {
+    //     localServicio.addLocal(local);
+    // }
 
-    @GetMapping
-    public ArrayList<Local> getAllLocals() {
-        return localServicio.getAllLocals();
-    }
+    // @GetMapping
+    // public ArrayList<Local> getAllLocals() {
+    //     return localServicio.getAllLocals();
+    // }
 
-    // example to get first element
-    @RequestMapping(value = "/primero", method = RequestMethod.GET)
-    public Local getFirstLocal() {
-        return localServicio.getAllLocals().remove(1);
-    }
+    // // example to get first element
+    // @RequestMapping(value = "/primero", method = RequestMethod.GET)
+    // public Local getFirstLocal() {
+    //     return localServicio.getAllLocals().remove(1);
+    // }
 
-    @RequestMapping(value = "/procesados", method = RequestMethod.GET)
-    public HashMap<String, String> getProcesados() {
-        return localServicio.getProcesados();
-    }
+    // @RequestMapping(value = "/procesados", method = RequestMethod.GET)
+    // public HashMap<String, String> getProcesados() {
+    //     return localServicio.getProcesados();
+    // }
 
-    @RequestMapping(value = "/drones", method = RequestMethod.GET)
-    public ArrayList<Dron> dronesDeLocal(@RequestBody String name) {
-        return LocalDato.dronesDeLocal(name);
-    }
+    // @RequestMapping(value = "/addpedido", method = RequestMethod.POST)
+    // public void addPedido(@RequestBody Pedido pedido) {
+    //     localServicio.addPedido(pedido);
+    // }
 
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
-    @RequestMapping(value = "/addpedido", method = RequestMethod.POST)
-    public void addPedido(@RequestBody Pedido pedido) {
-        localServicio.addPedido(pedido);
-        //Thread miHilo = new Thread(new EntregarPedidos(mainLocal));
-		//miHilo.start();
-    }
-
-    @RequestMapping(value = "/getpedidos", method = RequestMethod.GET)
-    public List<Pedido> getAllPedidos() {
-        return localServicio.getAllPedidos();
-    }
+    // @RequestMapping(value = "/getpedidos", method = RequestMethod.GET)
+    // public List<Pedido> getAllPedidos() {
+    //     return localServicio.getAllPedidos();
+    // }
 
     // @RequestMapping(value = "/adddron", method = RequestMethod.POST)
     // public void addDron(@RequestBody Dron dron) {
     //     localServicio.addDron(dron);
     // }
 
-    @RequestMapping(value = "/getdrones", method = RequestMethod.POST)
-    public List<Dron> getAllDrones() {
-        return localServicio.getAllDrones();
-    }
-    // Esto es para probar añadiendo directamente en la lista que a mi me interesa
-    // ir recorriendo.
+    // @RequestMapping(value = "/getdrones", method = RequestMethod.POST)
+    // public List<Dron> getAllDrones() {
+    //     return localServicio.getAllDrones();
+    // }
 
 }
