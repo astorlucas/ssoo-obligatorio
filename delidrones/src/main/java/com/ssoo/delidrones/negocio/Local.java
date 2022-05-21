@@ -47,7 +47,9 @@ public class Local implements Runnable {
             this.pedidos.add(o);
         }
 
-        print("Pedido " + o.id + " time: " + o.getPrepTime() , s);
+    //cambios
+    public UUID getId() {
+        return this.id;
     }
 
     public void addDron(Dron dron) {
