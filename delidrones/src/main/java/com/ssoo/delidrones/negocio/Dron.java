@@ -1,7 +1,6 @@
 package com.ssoo.delidrones.negocio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ssoo.delidrones.datos.LocalDato;
 import com.ssoo.delidrones.procesos.Watched;
 import com.ssoo.delidrones.utils.UtilsClass;
 

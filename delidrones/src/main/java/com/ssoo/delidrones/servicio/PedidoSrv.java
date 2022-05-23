@@ -1,7 +1,7 @@
 package com.ssoo.delidrones.servicio;
 
-import com.ssoo.delidrones.datos.PedidoDato;
 import com.ssoo.delidrones.negocio.Pedido;
+import com.ssoo.delidrones.procesos.RecibirPedidos;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +20,13 @@ public class PedidoSrv {
     // Logger logger = LoggerFactory.getLogger(PedidoSrv.class);
 
     // private final PedidoDato pedidoDato;
+    private RecibirPedidos receptor;
 
     // @Autowired
-    // public PedidoSrv(@Qualifier("pedido") PedidoDato pedido) {
-    //     this.pedidoDato = pedido;
+    // public PedidoSrv(@Qualifier("local") Pedido pedido) {
+    //     this.receptor.mainPedido = pedido;
     // }
+
 
     // public int addPedido(Pedido pedido) {
     //     return pedidoDato.insertPedido(pedido);

@@ -10,8 +10,11 @@ import java.util.Queue;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ssoo.delidrones.procesos.RecibirPedidos;
 import com.ssoo.delidrones.procesos.Watched;
 import com.ssoo.delidrones.utils.UtilsClass;
+
+import org.springframework.stereotype.Repository;
 
 import lombok.*;
 
@@ -19,7 +22,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Repository("mainLocal")
 public class Local implements Runnable {
 
     private Queue<Dron> drones = new LinkedList<Dron>();
@@ -36,7 +39,7 @@ public class Local implements Runnable {
                 this.pedidosIngresados--;
             }
 
-            print("Dron " + o.id, s + " pedido " + o.pedido.id);
+            print("Dron " + o.id, s + " pedido " + o.pedido.id + " time: " + o.pedido.getPrepTime());
         }
     }
 
@@ -47,9 +50,6 @@ public class Local implements Runnable {
             this.pedidos.add(o);
         }
 
-    //cambios
-    public UUID getId() {
-        return this.id;
     }
 
     public void addDron(Dron dron) {
@@ -114,5 +114,31 @@ public class Local implements Runnable {
 
     public void print(String lbl, String msg) {
         System.out.println(String.format("%-10s - %-3s - %s", lbl, this.pedidosIngresados, msg));
+    }
+
+    public int insertPedido(Pedido pedido) {
+        // pedidos.add(new Pedido(pedido.id, pedido.state, pedido.getPrepTime(),
+        // pedido.distance));
+        pedido = new Pedido(pedido.id, pedido.state, pedido.prepTime, 0);
+        UtilsClass.run(pedido);
+        // Add orders to the local
+        this.addPedido(pedido);
+        return 1;
+    }
+
+    public Queue<Dron> getDrones() {
+        return drones;
+    }
+
+    public void setDrones(Queue<Dron> drones) {
+        this.drones = drones;
+    }
+
+    public Queue<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Queue<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

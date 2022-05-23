@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.Semaphore;
 
-import com.ssoo.delidrones.datos.DronDato;
-import com.ssoo.delidrones.datos.LocalDato;
-import com.ssoo.delidrones.datos.PedidoDato;
 import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Pedido;
 import com.ssoo.delidrones.procesos.*;
@@ -37,21 +34,19 @@ public class DelidronesApplication {
 		// Thread repartidorHilo1 = new Thread(new RepartirPedidos(semDron, mainLocal));
 		// repartidorHilo1.start();
 
-		
-		//Abrimos el local
+		// Abrimos el local
 		Local mainLocal = new Local();
 
-		//Se cargan los drones
+		// Se cargan los drones
 		for (int d = 1; d <= 10; d++) {
 			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
 		}
 
-		//Se comienzan a recibir pedidos
-		RecibirPedidos ourOrders = new RecibirPedidos(5, mainLocal);
+		// Se comienzan a recibir pedidos
+		// RecibirPedidos ourOrders = new RecibirPedidos(7, mainLocal);
 
-		UtilsClass.run(ourOrders);
+		// UtilsClass.run(ourOrders);
 		UtilsClass.run(mainLocal);
-		//NEW COMMENT
 	}
 
 }

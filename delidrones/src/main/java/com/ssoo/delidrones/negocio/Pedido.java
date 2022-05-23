@@ -24,11 +24,23 @@ public class Pedido extends Watched {
     public static final String INGRESADO = "ingresado";
     public static final String EN_PROCESO = "en-proceso";
     public static final String PREPARADO = "preparado";
-    public static int prepTime;
+    public int prepTime;
+    public String id;
+    public String state;
+    public int distance;
 
-    public Pedido(String id, String state, int prepTime) {
+    // public Pedido(String id, String state, int prepTime) {
+    //     super(id, state);
+    //     this.prepTime = prepTime;
+    // }
+
+    public Pedido(@JsonProperty("id") String id, @JsonProperty("state") String state,
+            @JsonProperty("preptime") int prepTime, @JsonProperty("distance") int distance) {
         super(id, state);
+        this.id = id;
+        this.state = state;
         this.prepTime = prepTime;
+        this.distance = distance;
     }
 
     @Override
@@ -46,8 +58,20 @@ public class Pedido extends Watched {
 
     }
 
-    public int getPrepTime(){
+    public int getPrepTime() {
         return this.prepTime;
+    }
+
+    public static String getIngresado() {
+        return INGRESADO;
+    }
+
+    public static String getEnProceso() {
+        return EN_PROCESO;
+    }
+
+    public static String getPreparado() {
+        return PREPARADO;
     }
 
 }
