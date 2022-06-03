@@ -29,10 +29,10 @@ public class Pedido extends Watched {
     public String state;
     public int distance;
 
-    // public Pedido(String id, String state, int prepTime) {
-    //     super(id, state);
-    //     this.prepTime = prepTime;
-    // }
+    public Pedido(String id, String state, int prepTime) {
+        super(id, state);
+        this.prepTime = prepTime;
+    }
 
     public Pedido(@JsonProperty("id") String id, @JsonProperty("state") String state,
             @JsonProperty("preptime") int prepTime, @JsonProperty("distance") int distance) {

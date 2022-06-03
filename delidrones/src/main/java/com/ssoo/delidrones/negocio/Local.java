@@ -16,6 +16,7 @@ import com.ssoo.delidrones.utils.UtilsClass;
 
 import org.springframework.stereotype.Repository;
 
+import ch.qos.logback.classic.joran.action.ReceiverAction;
 import lombok.*;
 
 @Getter
@@ -28,6 +29,7 @@ public class Local implements Runnable {
     private Queue<Dron> drones = new LinkedList<Dron>();
     private Queue<Pedido> pedidos = new LinkedList<Pedido>();
     private int pedidosIngresados = 0;
+    RecibirPedidos receptor;
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
@@ -117,12 +119,12 @@ public class Local implements Runnable {
     }
 
     public int insertPedido(Pedido pedido) {
-        // pedidos.add(new Pedido(pedido.id, pedido.state, pedido.getPrepTime(),
-        // pedido.distance));
-        pedido = new Pedido(pedido.id, pedido.state, pedido.prepTime, 0);
-        UtilsClass.run(pedido);
+        pedidos.add(new Pedido(pedido.id, pedido.state, pedido.getPrepTime(),0));        
+        for(Pedido p : pedidos){
+            System.out.println("BANDERA: "+p.id);
+        }
         // Add orders to the local
-        this.addPedido(pedido);
+        //this.addPedido(pedido2);
         return 1;
     }
 

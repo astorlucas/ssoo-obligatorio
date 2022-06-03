@@ -17,10 +17,9 @@ public class RecibirPedidos implements Runnable {
   private Local mainLocal;
   private Pedido pedido;
 
-  public RecibirPedidos(int total, Local thisLocal, Pedido pedido) {
+  public RecibirPedidos(int total, Local thisLocal) {
     this.total = total;
     this.mainLocal = thisLocal;
-    this.pedido = pedido;
   }
 
   public void run() {
@@ -55,14 +54,17 @@ public class RecibirPedidos implements Runnable {
       // } catch (IOException e) {
       // e.printStackTrace();
       // }
-      // }
       // Run every order lifecicle
-      pedido = new Pedido(pedido.id, pedido.state, pedido.prepTime, 0);
-      UtilsClass.run(pedido);
-      // Add orders to the local
-      this.mainLocal.addPedido(pedido);
-      // Decrement total of orders
-      this.total--;
+      if (pedido == null) {
+        continue;
+      } else {
+        UtilsClass.run(pedido);
+        // Add orders to the local
+        this.mainLocal.addPedido(pedido);
+        // Decrement total of orders
+        this.total--;
+      }
+
     }
   }
 

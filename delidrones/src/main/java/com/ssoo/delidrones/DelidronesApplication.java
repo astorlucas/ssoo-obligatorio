@@ -41,11 +41,16 @@ public class DelidronesApplication {
 		for (int d = 1; d <= 10; d++) {
 			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
 		}
+		for(Pedido p : mainLocal.getPedidos()){
+			System.out.println("main: "+ p.id);
+			UtilsClass.run(p);
+		}
 
+		System.out.println("hola");
 		// Se comienzan a recibir pedidos
-		// RecibirPedidos ourOrders = new RecibirPedidos(7, mainLocal);
+		//RecibirPedidos ourOrders = new RecibirPedidos(3, mainLocal);
 
-		// UtilsClass.run(ourOrders);
+		//UtilsClass.run(ourOrders);
 		UtilsClass.run(mainLocal);
 	}
 
