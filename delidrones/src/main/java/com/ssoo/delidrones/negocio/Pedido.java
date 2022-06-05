@@ -14,10 +14,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 
 public class Pedido extends Watched {
 

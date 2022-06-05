@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>MAIN DE SPRING</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-    <h1>ESTO ES UN EJEMPLO</h1>
-</body>
 
+<h1>Spring Boot file upload example</h1>
+
+<form method="POST" action="api/miapi/local/upload" enctype="multipart/form-data">
+    <input type="file" name="file" /><br/><br/>
+    <input type="submit" value="Submit" />
+</form>
+
+</body>
 </html>

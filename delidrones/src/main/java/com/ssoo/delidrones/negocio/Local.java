@@ -3,6 +3,7 @@ package com.ssoo.delidrones.negocio;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -29,7 +30,19 @@ public class Local implements Runnable {
     private Queue<Dron> drones = new LinkedList<Dron>();
     private Queue<Pedido> pedidos = new LinkedList<Pedido>();
     private int pedidosIngresados = 0;
-    RecibirPedidos receptor;
+    private FileWriter myWriter;
+
+    public FileWriter getMyWriter() {
+        return myWriter;
+    }
+
+    public static void setMyWriter(FileWriter myWriter) {
+        try {
+            myWriter = new FileWriter("./src/main/resources/newPedido.csv");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
@@ -81,7 +94,7 @@ public class Local implements Runnable {
             UtilsClass.sleep(2);
         }
 
-        System.out.println("# Finaliz� la jornada");
+        System.out.println("# Finaliza la jornada");
     }
 
     private boolean procesarPedidos() {
@@ -118,16 +131,6 @@ public class Local implements Runnable {
         System.out.println(String.format("%-10s - %-3s - %s", lbl, this.pedidosIngresados, msg));
     }
 
-    public int insertPedido(Pedido pedido) {
-        pedidos.add(new Pedido(pedido.id, pedido.state, pedido.getPrepTime(),0));        
-        for(Pedido p : pedidos){
-            System.out.println("BANDERA: "+p.id);
-        }
-        // Add orders to the local
-        //this.addPedido(pedido2);
-        return 1;
-    }
-
     public Queue<Dron> getDrones() {
         return drones;
     }
@@ -143,4 +146,19 @@ public class Local implements Runnable {
     public void setPedidos(Queue<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
+
+    // public int insertPedido(Pedido pedido) {
+    //     try {
+    //         String line = pedido.id + "," + pedido.state + "," + pedido.prepTime + "," + pedido.distance;
+    //         myWriter.write(line);
+    //         if (line.contains("close")) {
+    //             myWriter.close();
+    //         }
+    //     } catch (IOException e) {
+    //         System.out.println("An error occurred.");
+    //         e.printStackTrace();
+    //     }
+    //     return 1;
+    // }
+
 }
