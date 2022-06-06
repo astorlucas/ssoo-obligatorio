@@ -1,5 +1,8 @@
 package com.ssoo.delidrones;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.Semaphore;
@@ -21,19 +24,6 @@ public class DelidronesApplication {
 		SpringApplication.run(DelidronesApplication.class, args);
 		// Semaphore semDron = new Semaphore(0);
 
-		// // Abren los locales
-		// LocalDato mainLocal = new LocalDato();
-		// // mainLocal.cargarLocales();
-		// mainLocal.cargarPedidos();
-		// mainLocal.cargarDrones();
-
-		// // Se comienzan a cocinar los pedidos crudos
-		// Thread cocinar = new Thread(new PrepararOrden(mainLocal, semDron));
-		// cocinar.start();
-		// // Se reparten pedidos cocinados a demanda
-		// Thread repartidorHilo1 = new Thread(new RepartirPedidos(semDron, mainLocal));
-		// repartidorHilo1.start();
-
 		// Abrimos el local
 		Local mainLocal = new Local();
 
@@ -41,11 +31,9 @@ public class DelidronesApplication {
 		for (int d = 1; d <= 3; d++) {
 			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
 		}
-
-		System.out.println("hola");
 		// Se comienzan a recibir pedidos
 		RecibirPedidos ourOrders = new RecibirPedidos();
-		ourOrders.setTotal(6);
+		ourOrders.setTotal(UtilsClass.ordersSize());
 		ourOrders.setLocal(mainLocal);
 
 		UtilsClass.run(ourOrders);

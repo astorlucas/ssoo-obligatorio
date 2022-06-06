@@ -21,7 +21,6 @@ public class RecibirPedidos implements Runnable {
   private Pedido pedido;
   private Queue<Pedido> pedidos = new LinkedList<Pedido>();
 
-
   // public RecibirPedidos(int total, Local thisLocal) {
   // this.total = total;
   // this.mainLocal = thisLocal;
@@ -45,17 +44,18 @@ public class RecibirPedidos implements Runnable {
       String splitBy = ",";
       try {
         File file = new File(
-            "./src/main/resources/newPedido.csv");
+            "./src/main/resources/pedido.csv");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         while ((line = br.readLine()) != null) {
           String[] linea = line.split(splitBy);
           Integer prepTime = Integer.parseInt(linea[0]);
+          Integer distance = Integer.parseInt(linea[3]);
           // Random time to between orders based on time defined by file
           UtilsClass.sleepRand(5, 10 + prepTime);
           // New order created for every line
-          Pedido pedido = new Pedido(this.total + "", "Pedido " + this.total + "time "
-              + prepTime, prepTime, 0);
+          Pedido pedido = new Pedido(this.total + "",prepTime, linea[1],linea[2],distance);
+          pedidos.add(pedido);
           // Run every order lifecicle
           UtilsClass.run(pedido);
           // Add orders to the local

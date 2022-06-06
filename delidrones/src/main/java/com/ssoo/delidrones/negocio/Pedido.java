@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Pedido extends Watched {
 
     public static final String INGRESADO = "ingresado";
@@ -24,16 +27,12 @@ public class Pedido extends Watched {
     public String id;
     public String state;
     public int distance;
+    public UUID uid;
 
-    public Pedido(String id, String state, int prepTime) {
+    public Pedido(String id, int prepTime, String location, String state,
+            int distance) {
         super(id, state);
-        this.prepTime = prepTime;
-    }
-
-    public Pedido(@JsonProperty("id") String id, @JsonProperty("state") String state,
-            @JsonProperty("preptime") int prepTime, @JsonProperty("distance") int distance) {
-        super(id, state);
-        this.id = id;
+        this.uid = UUID.randomUUID();
         this.state = state;
         this.prepTime = prepTime;
         this.distance = distance;
@@ -68,6 +67,42 @@ public class Pedido extends Watched {
 
     public static String getPreparado() {
         return PREPARADO;
+    }
+
+    public void setPrepTime(int prepTime) {
+        this.prepTime = prepTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public UUID getUid() {
+        return uid;
+    }
+
+    public void setUid(UUID uid) {
+        this.uid = uid;
     }
 
 }

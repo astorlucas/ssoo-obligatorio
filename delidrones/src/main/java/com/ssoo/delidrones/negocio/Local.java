@@ -54,7 +54,7 @@ public class Local implements Runnable {
                 this.pedidosIngresados--;
             }
 
-            print("Dron " + o.id, s + " pedido " + o.pedido.id + " time: " + o.pedido.getPrepTime());
+            print("Dron " + o.id, s + " pedido " + o.pedido.getUid() + " time: " + o.pedido.getPrepTime());
         }
     }
 
