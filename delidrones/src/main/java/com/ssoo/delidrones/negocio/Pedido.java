@@ -10,9 +10,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 @Getter
 @Setter
@@ -20,22 +23,23 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class Pedido extends Watched {
 
+    Logger logger =  Logger.getLogger(this.getClass().getName());
     public static final String INGRESADO = "ingresado";
     public static final String EN_PROCESO = "en-proceso";
     public static final String PREPARADO = "preparado";
-    public int prepTime;
     public String id;
     public String state;
     public int distance;
     public UUID uid;
+    public String destiny;
 
-    public Pedido(String id, int prepTime, String location, String state,
-            int distance) {
+    public Pedido(String id, String destino, String state, int distance) {
         super(id, state);
+        this.id = id;
         this.uid = UUID.randomUUID();
         this.state = state;
-        this.prepTime = prepTime;
         this.distance = distance;
+        this.destiny = destino;
     }
 
     @Override
@@ -50,11 +54,9 @@ public class Pedido extends Watched {
         UtilsClass.sleepRand(2, 6);
 
         this.mainLocal.changeState(this, PREPARADO);
+        
+        
 
-    }
-
-    public int getPrepTime() {
-        return this.prepTime;
     }
 
     public static String getIngresado() {
@@ -67,10 +69,6 @@ public class Pedido extends Watched {
 
     public static String getPreparado() {
         return PREPARADO;
-    }
-
-    public void setPrepTime(int prepTime) {
-        this.prepTime = prepTime;
     }
 
     public String getId() {
@@ -103,6 +101,22 @@ public class Pedido extends Watched {
 
     public void setUid(UUID uid) {
         this.uid = uid;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
+    public String getDestiny() {
+        return destiny;
+    }
+
+    public void setDestiny(String destiny) {
+        this.destiny = destiny;
     }
 
 }

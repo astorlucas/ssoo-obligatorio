@@ -49,12 +49,11 @@ public class RecibirPedidos implements Runnable {
         BufferedReader br = new BufferedReader(fr);
         while ((line = br.readLine()) != null) {
           String[] linea = line.split(splitBy);
-          Integer prepTime = Integer.parseInt(linea[0]);
-          Integer distance = Integer.parseInt(linea[3]);
+          Integer distance = Integer.parseInt(linea[2]);
           // Random time to between orders based on time defined by file
-          UtilsClass.sleepRand(5, 10 + prepTime);
+          UtilsClass.sleepRand(5, 10 + distance);
           // New order created for every line
-          Pedido pedido = new Pedido(this.total + "",prepTime, linea[1],linea[2],distance);
+          Pedido pedido = new Pedido(this.total + "", linea[0], linea[1],distance);
           pedidos.add(pedido);
           // Run every order lifecicle
           UtilsClass.run(pedido);

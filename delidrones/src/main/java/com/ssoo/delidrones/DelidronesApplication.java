@@ -28,7 +28,7 @@ public class DelidronesApplication {
 		Local mainLocal = new Local();
 
 		// Se cargan los drones
-		for (int d = 1; d <= 3; d++) {
+		for (int d = 1; d <= 12; d++) {
 			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
 		}
 		// Se comienzan a recibir pedidos

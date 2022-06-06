@@ -5,10 +5,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssoo.delidrones.procesos.RecibirPedidos;
@@ -27,22 +31,11 @@ import lombok.*;
 @Repository("mainLocal")
 public class Local implements Runnable {
 
+    Logger logger =  Logger.getLogger(this.getClass().getName());
     private Queue<Dron> drones = new LinkedList<Dron>();
     private Queue<Pedido> pedidos = new LinkedList<Pedido>();
     private int pedidosIngresados = 0;
-    private FileWriter myWriter;
-
-    public FileWriter getMyWriter() {
-        return myWriter;
-    }
-
-    public static void setMyWriter(FileWriter myWriter) {
-        try {
-            myWriter = new FileWriter("./src/main/resources/newPedido.csv");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+   
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
@@ -51,10 +44,12 @@ public class Local implements Runnable {
             this.drones.add(o);
         } else {
             if (Dron.PEDIDO_ENTREGADO.equals(s)) {
+                String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+                logger.info("Pedido: " + o.pedido.destiny + " entregado a las " + timeStamp);
                 this.pedidosIngresados--;
             }
 
-            print("Dron " + o.id, s + " pedido " + o.pedido.getUid() + " time: " + o.pedido.getPrepTime());
+            print("Dron " + o.id, s + " pedido " + o.id + " order: " + o.pedido.getDestiny());
         }
     }
 
@@ -62,6 +57,8 @@ public class Local implements Runnable {
         if (Pedido.INGRESADO.equals(s)) {
             this.pedidosIngresados++;
         } else if (Pedido.PREPARADO.equals(s)) {
+            String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            logger.info("El pedido: "+ o.destiny + " fue finalizado a las "+ timeStamp);
             this.pedidos.add(o);
         }
 
@@ -76,7 +73,7 @@ public class Local implements Runnable {
     }
 
     public void run() {
-        System.out.println("# Inicia la jornada");
+        logger.warning("# Inicia la jornada");
 
         while (!this.hasPedidosIngresados()) {
             UtilsClass.sleep(2);
@@ -94,7 +91,7 @@ public class Local implements Runnable {
             UtilsClass.sleep(2);
         }
 
-        System.out.println("# Finaliza la jornada");
+        logger.warning("# Finaliza la jornada");
     }
 
     private boolean procesarPedidos() {
@@ -104,6 +101,7 @@ public class Local implements Runnable {
             Pedido pedido = this.pedidos.poll();
 
             dron.setPedido(pedido);
+            logger.info("THIS DRON: "+ dron.id + " has this order " + pedido.getDestiny());
 
             UtilsClass.run(dron);
         }
@@ -128,7 +126,7 @@ public class Local implements Runnable {
     }
 
     public void print(String lbl, String msg) {
-        System.out.println(String.format("%-10s - %-3s - %s", lbl, this.pedidosIngresados, msg));
+        logger.info(String.format("%-10s - %-3s - %s", lbl, this.pedidosIngresados, msg));
     }
 
     public Queue<Dron> getDrones() {
@@ -146,19 +144,5 @@ public class Local implements Runnable {
     public void setPedidos(Queue<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-
-    // public int insertPedido(Pedido pedido) {
-    //     try {
-    //         String line = pedido.id + "," + pedido.state + "," + pedido.prepTime + "," + pedido.distance;
-    //         myWriter.write(line);
-    //         if (line.contains("close")) {
-    //             myWriter.close();
-    //         }
-    //     } catch (IOException e) {
-    //         System.out.println("An error occurred.");
-    //         e.printStackTrace();
-    //     }
-    //     return 1;
-    // }
 
 }
