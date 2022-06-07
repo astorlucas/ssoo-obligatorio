@@ -28,9 +28,11 @@ public class DelidronesApplication {
 		Local mainLocal = new Local();
 
 		// Se cargan los drones
-		for (int d = 1; d <= 12; d++) {
+		for (int d = 1; d <= 1; d++) {
 			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
 		}
+
+
 		// Se comienzan a recibir pedidos
 		RecibirPedidos ourOrders = new RecibirPedidos();
 		ourOrders.setTotal(UtilsClass.ordersSize());
@@ -38,6 +40,7 @@ public class DelidronesApplication {
 
 		UtilsClass.run(ourOrders);
 		UtilsClass.run(mainLocal);
+	
 	}
 
 }

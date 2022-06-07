@@ -19,6 +19,7 @@ public class Dron extends Watched {
     public static final String HACIA_EL_RESTAURANT = "hacia-restaurant";
     public static final String HACIA_EL_DESTINO = "hacia-destinatario";
     public static final String PEDIDO_ENTREGADO = "pedido-entregado";
+    private Semaphore semaforo = new Semaphore(1);
 
     public Pedido pedido;
 
@@ -46,13 +47,24 @@ public class Dron extends Watched {
         this.mainLocal.changeState(this, PEDIDO_ENTREGADO);
 
         this.pedido = null;
-
+        semaforo.release();
         this.mainLocal.changeState(this, DISPONIBLE);
 
     }
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+
+    public void assignOrder(Pedido pedido){
+        try {
+            semaforo.acquire();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        setPedido(pedido);
+
     }
 
 }

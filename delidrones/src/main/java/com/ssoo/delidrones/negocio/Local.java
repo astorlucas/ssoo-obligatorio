@@ -100,7 +100,7 @@ public class Local implements Runnable {
             Dron dron = this.drones.poll();
             Pedido pedido = this.pedidos.poll();
 
-            dron.setPedido(pedido);
+            dron.assignOrder(pedido);
             logger.info("THIS DRON: "+ dron.id + " has this order " + pedido.getDestiny());
 
             UtilsClass.run(dron);
