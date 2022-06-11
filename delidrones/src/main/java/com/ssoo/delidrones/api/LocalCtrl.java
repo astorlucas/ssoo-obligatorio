@@ -12,7 +12,6 @@ import com.ssoo.delidrones.negocio.Dron;
 import com.ssoo.delidrones.negocio.Local;
 import com.ssoo.delidrones.negocio.Pedido;
 import com.ssoo.delidrones.procesos.RecibirPedidos;
-import com.ssoo.delidrones.servicio.LocalSrv;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

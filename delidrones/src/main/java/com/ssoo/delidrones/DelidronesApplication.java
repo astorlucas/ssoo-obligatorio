@@ -22,14 +22,14 @@ public class DelidronesApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(DelidronesApplication.class, args);
-		// Semaphore semDron = new Semaphore(0);
+		Semaphore semDron = new Semaphore(1);
 
 		// Abrimos el local
 		Local mainLocal = new Local();
 
 		// Se cargan los drones
-		for (int d = 1; d <= 1; d++) {
-			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE));
+		for (int d = 1; d <= UtilsClass.ordersSize(); d++) {
+			mainLocal.addDron(new Dron(d + "", Dron.DISPONIBLE, semDron));
 		}
 
 
@@ -39,6 +39,7 @@ public class DelidronesApplication {
 		ourOrders.setLocal(mainLocal);
 
 		UtilsClass.run(ourOrders);
+
 		UtilsClass.run(mainLocal);
 	
 	}

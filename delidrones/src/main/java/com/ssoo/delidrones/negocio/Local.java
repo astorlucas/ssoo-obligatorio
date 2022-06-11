@@ -31,25 +31,28 @@ import lombok.*;
 @Repository("mainLocal")
 public class Local implements Runnable {
 
-    Logger logger =  Logger.getLogger(this.getClass().getName());
+    Logger logger = Logger.getLogger(this.getClass().getName());
     private Queue<Dron> drones = new LinkedList<Dron>();
     private Queue<Pedido> pedidos = new LinkedList<Pedido>();
     private int pedidosIngresados = 0;
-   
+    private int totalOrders = UtilsClass.ordersSize();
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
             print("Dron " + o.id, s);
-
+            if (totalOrders == 0) {
+                logger.warning("# Finaliza la jornada");
+            }
             this.drones.add(o);
         } else {
             if (Dron.PEDIDO_ENTREGADO.equals(s)) {
                 String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-                logger.info("Pedido: " + o.pedido.destiny + " entregado a las " + timeStamp);
+                logger.info("Order: " + o.pedido.food + " was delivered at " + timeStamp);
                 this.pedidosIngresados--;
+
             }
 
-            print("Dron " + o.id, s + " pedido " + o.id + " order: " + o.pedido.getDestiny());
+            print("Dron " + o.id, s + " order: " + o.pedido.food);
         }
     }
 
@@ -58,8 +61,9 @@ public class Local implements Runnable {
             this.pedidosIngresados++;
         } else if (Pedido.PREPARADO.equals(s)) {
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            logger.info("El pedido: "+ o.destiny + " fue finalizado a las "+ timeStamp);
+            logger.info("Te order: " + o.food + " finished preparing at " + timeStamp);
             this.pedidos.add(o);
+            totalOrders--;
         }
 
     }
@@ -75,11 +79,11 @@ public class Local implements Runnable {
     public void run() {
         logger.warning("# Inicia la jornada");
 
-        while (!this.hasPedidosIngresados()) {
-            UtilsClass.sleep(2);
-        }
+        // while (!this.hasPedidosIngresados()) {
+        // UtilsClass.sleep(2);
+        // }
 
-        while (this.hasPedidosIngresados() || this.hasPedidos()) {
+        while (totalOrders > 0) {// (this.hasPedidosIngresados() || this.hasPedidos()) {
 
             UtilsClass.sleep(5);
 
@@ -87,11 +91,11 @@ public class Local implements Runnable {
 
         }
 
-        while (this.hasPedidosIngresados()) {
-            UtilsClass.sleep(2);
-        }
+        // while (this.hasPedidosIngresados()) {
+        // UtilsClass.sleep(2);
+        // }
 
-        logger.warning("# Finaliza la jornada");
+        // logger.warning("# Finaliza la jornada");
     }
 
     private boolean procesarPedidos() {
@@ -101,7 +105,8 @@ public class Local implements Runnable {
             Pedido pedido = this.pedidos.poll();
 
             dron.assignOrder(pedido);
-            logger.info("THIS DRON: "+ dron.id + " has this order " + pedido.getDestiny());
+            String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            logger.info("This Dron: " + dron.id + " picked this order " + pedido.food + " at " + timeStamp);
 
             UtilsClass.run(dron);
         }

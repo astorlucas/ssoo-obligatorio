@@ -32,14 +32,16 @@ public class Pedido extends Watched {
     public int distance;
     public UUID uid;
     public String destiny;
+    public String food;
 
-    public Pedido(String id, String destino, String state, int distance) {
+    public Pedido(String id, String food, String destino, String state, int distance) {
         super(id, state);
         this.id = id;
         this.uid = UUID.randomUUID();
         this.state = state;
         this.distance = distance;
         this.destiny = destino;
+        this.food = food;
     }
 
     @Override
@@ -51,7 +53,7 @@ public class Pedido extends Watched {
 
         this.mainLocal.changeState(this, EN_PROCESO);
 
-        UtilsClass.sleepRand(2, 6);
+        UtilsClass.sleepRand(this.distance, this.distance);
 
         this.mainLocal.changeState(this, PREPARADO);
         

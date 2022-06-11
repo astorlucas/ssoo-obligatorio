@@ -5,9 +5,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.UUID;
-
+import java.util.logging.Logger;
 import java.util.Queue;
 import com.ssoo.delidrones.negocio.Local;
 import com.ssoo.delidrones.negocio.Pedido;
@@ -19,7 +22,8 @@ public class RecibirPedidos implements Runnable {
   private int total;
   private Local mainLocal;
   private Pedido pedido;
-  private Queue<Pedido> pedidos = new LinkedList<Pedido>();
+  //private Queue<Pedido> pedidos = new LinkedList<Pedido>();
+  Logger logger =  Logger.getLogger(this.getClass().getName());
 
   // public RecibirPedidos(int total, Local thisLocal) {
   // this.total = total;
@@ -49,12 +53,14 @@ public class RecibirPedidos implements Runnable {
         BufferedReader br = new BufferedReader(fr);
         while ((line = br.readLine()) != null) {
           String[] linea = line.split(splitBy);
-          Integer distance = Integer.parseInt(linea[2]);
+          Integer distance = Integer.parseInt(linea[3]);
           // Random time to between orders based on time defined by file
           UtilsClass.sleepRand(5, 10 + distance);
           // New order created for every line
-          Pedido pedido = new Pedido(this.total + "", linea[0], linea[1],distance);
-          pedidos.add(pedido);
+          Pedido pedido = new Pedido(this.total + "", linea[0], linea[1], linea[2], distance);
+          //pedidos.add(pedido);
+          String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+          logger.info("Te order: " + linea[0] + " was received at " + timeStamp);
           // Run every order lifecicle
           UtilsClass.run(pedido);
           // Add orders to the local

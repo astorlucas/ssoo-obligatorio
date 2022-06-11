@@ -41,7 +41,7 @@ public class UtilsClass {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return size+1;
+        return size;
     }
 
 }

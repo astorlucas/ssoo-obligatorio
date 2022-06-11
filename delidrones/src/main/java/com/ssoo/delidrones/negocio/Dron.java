@@ -19,12 +19,13 @@ public class Dron extends Watched {
     public static final String HACIA_EL_RESTAURANT = "hacia-restaurant";
     public static final String HACIA_EL_DESTINO = "hacia-destinatario";
     public static final String PEDIDO_ENTREGADO = "pedido-entregado";
-    private Semaphore semaforo = new Semaphore(1);
+    private Semaphore semaforo;
 
     public Pedido pedido;
 
-    public Dron(String id, String state) {
+    public Dron(String id, String state, Semaphore sem) {
         super(id, state);
+        this.semaforo = sem;
     }
 
     @Override
