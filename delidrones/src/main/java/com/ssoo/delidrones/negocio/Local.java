@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ssoo.delidrones.procesos.RecibirPedidos;
 import com.ssoo.delidrones.procesos.Watched;
+import com.ssoo.delidrones.utils.MyLog;
 import com.ssoo.delidrones.utils.UtilsClass;
 
 import org.springframework.stereotype.Repository;
@@ -32,27 +34,38 @@ import lombok.*;
 public class Local implements Runnable {
 
     Logger logger = Logger.getLogger(this.getClass().getName());
+    private MyLog log2File = new MyLog();
     private Queue<Dron> drones = new LinkedList<Dron>();
     private Queue<Pedido> pedidos = new LinkedList<Pedido>();
     private int pedidosIngresados = 0;
     private int totalOrders = UtilsClass.ordersSize();
+    private Reloj deliverProm = new Reloj();
+    private Reloj prepareProm = new Reloj();
+
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
             print("Dron " + o.id, s);
+
+            this.drones.add(o);
+
             if (totalOrders == 0) {
                 logger.warning("# Finaliza la jornada");
             }
-            this.drones.add(o);
         } else {
             if (Dron.PEDIDO_ENTREGADO.equals(s)) {
                 String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
                 logger.info("Order: " + o.pedido.food + " was delivered at " + timeStamp);
+                log2File.log(Thread.currentThread().getName(), o.pedido.food, "entregado");
+                LocalTime time = LocalTime.now();
+                o.pedido.setTimeDelivered(time.toNanoOfDay() - o.pedido.getTimeReceived());
+                deliverProm.addAllTimeDeliver(o.pedido.getTimeDelivered());
                 this.pedidosIngresados--;
 
             }
 
             print("Dron " + o.id, s + " order: " + o.pedido.food);
+
         }
     }
 
@@ -61,7 +74,10 @@ public class Local implements Runnable {
             this.pedidosIngresados++;
         } else if (Pedido.PREPARADO.equals(s)) {
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            logger.info("Te order: " + o.food + " finished preparing at " + timeStamp);
+            logger.info("The order: " + o.food + " finished preparing at " + timeStamp);
+            log2File.log(Thread.currentThread().getName(), o.food, "preparado");
+            LocalTime time = LocalTime.now();
+            o.setTimePrepared(time.toNanoOfDay() - o.getTimeReceived());
             this.pedidos.add(o);
             totalOrders--;
         }
@@ -107,7 +123,7 @@ public class Local implements Runnable {
             dron.assignOrder(pedido);
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
             logger.info("This Dron: " + dron.id + " picked this order " + pedido.food + " at " + timeStamp);
-
+            log2File.log(Thread.currentThread().getName(), pedido.food, "recogido");
             UtilsClass.run(dron);
         }
 

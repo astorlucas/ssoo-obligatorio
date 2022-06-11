@@ -33,6 +33,9 @@ public class Pedido extends Watched {
     public UUID uid;
     public String destiny;
     public String food;
+    public long timeStart;
+    public long timePrepared;
+    public long timeDelivered;
 
     public Pedido(String id, String food, String destino, String state, int distance) {
         super(id, state);
@@ -53,13 +56,38 @@ public class Pedido extends Watched {
 
         this.mainLocal.changeState(this, EN_PROCESO);
 
-        UtilsClass.sleepRand(this.distance, this.distance);
+        UtilsClass.sleepRand(2, 6);
 
         this.mainLocal.changeState(this, PREPARADO);
         
         
 
     }
+
+    public void setTimeReceived(long time){
+        this.timeStart = time;
+    }
+
+    public long getTimeReceived(){
+        return timeStart;
+    }
+
+    public void setTimePrepared(long time){
+        this.timePrepared = time;
+    }
+
+    public long getTimePrepared(){
+        return timePrepared;
+    }
+
+    public void setTimeDelivered(long time){
+        this.timeDelivered = time;
+    }
+
+    public long getTimeDelivered(){
+        return timeDelivered;
+    }
+
 
     public static String getIngresado() {
         return INGRESADO;

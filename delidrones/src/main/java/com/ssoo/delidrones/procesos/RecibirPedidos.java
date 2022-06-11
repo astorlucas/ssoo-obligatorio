@@ -3,19 +3,15 @@ package com.ssoo.delidrones.procesos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.security.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.UUID;
 import java.util.logging.Logger;
-import java.util.Queue;
 import com.ssoo.delidrones.negocio.Local;
 import com.ssoo.delidrones.negocio.Pedido;
+import com.ssoo.delidrones.utils.MyLog;
 import com.ssoo.delidrones.utils.UtilsClass;
-import org.springframework.stereotype.Repository;
 
 public class RecibirPedidos implements Runnable {
 
@@ -24,7 +20,7 @@ public class RecibirPedidos implements Runnable {
   private Pedido pedido;
   //private Queue<Pedido> pedidos = new LinkedList<Pedido>();
   Logger logger =  Logger.getLogger(this.getClass().getName());
-
+  private MyLog log2File = new MyLog();
   // public RecibirPedidos(int total, Local thisLocal) {
   // this.total = total;
   // this.mainLocal = thisLocal;
@@ -58,9 +54,12 @@ public class RecibirPedidos implements Runnable {
           UtilsClass.sleepRand(5, 10 + distance);
           // New order created for every line
           Pedido pedido = new Pedido(this.total + "", linea[0], linea[1], linea[2], distance);
+          LocalTime time = LocalTime.now();
+          pedido.setTimeReceived(time.toNanoOfDay());
           //pedidos.add(pedido);
           String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
           logger.info("Te order: " + linea[0] + " was received at " + timeStamp);
+          log2File.log(Thread.currentThread().getName(), linea[0] , "recibido");
           // Run every order lifecicle
           UtilsClass.run(pedido);
           // Add orders to the local
