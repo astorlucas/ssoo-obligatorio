@@ -15,33 +15,29 @@ import java.util.Queue;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ssoo.delidrones.procesos.RecibirPedidos;
-import com.ssoo.delidrones.procesos.Watched;
 import com.ssoo.delidrones.utils.MyLog;
 import com.ssoo.delidrones.utils.UtilsClass;
 
-import org.springframework.stereotype.Repository;
-
-import ch.qos.logback.classic.joran.action.ReceiverAction;
 import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Repository("mainLocal")
 public class Local implements Runnable {
 
     Logger logger = Logger.getLogger(this.getClass().getName());
-    private MyLog log2File = new MyLog();
+    private MyLog log2File;
     private Queue<Dron> drones = new LinkedList<Dron>();
     private Queue<Pedido> pedidos = new LinkedList<Pedido>();
     private int pedidosIngresados = 0;
     private int totalOrders = UtilsClass.ordersSize();
-    private Reloj deliverProm = new Reloj();
-    private Reloj prepareProm = new Reloj();
+    private Reloj deliverProm;
 
+    public Local(Reloj reloj, MyLog log) {
+        this.deliverProm = reloj;
+        this.log2File = log;
+    }
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
@@ -55,16 +51,21 @@ public class Local implements Runnable {
         } else {
             if (Dron.PEDIDO_ENTREGADO.equals(s)) {
                 String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-                logger.info("Order: " + o.pedido.food + " was delivered at " + timeStamp);
-                log2File.log(Thread.currentThread().getName(), o.pedido.food, "entregado");
+
                 LocalTime time = LocalTime.now();
                 o.pedido.setTimeDelivered(time.toNanoOfDay() - o.pedido.getTimeReceived());
                 deliverProm.addAllTimeDeliver(o.pedido.getTimeDelivered());
+
+                logger.info("El Pedido: " + o.pedido.food + " fue entregado a las: " + timeStamp + " tiempo de entrega "
+                        + String.valueOf(o.pedido.getTimeReceived() / 1000000));
+                log2File.log(Thread.currentThread().getName(), o.pedido.food, "entregado",
+                        String.valueOf(o.pedido.getTimeReceived() / 1000000));
+
                 this.pedidosIngresados--;
 
             }
 
-            print("Dron " + o.id, s + " order: " + o.pedido.food);
+            print("Dron " + o.id, s + " con el pedido: " + o.pedido.food);
 
         }
     }
@@ -74,10 +75,16 @@ public class Local implements Runnable {
             this.pedidosIngresados++;
         } else if (Pedido.PREPARADO.equals(s)) {
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            logger.info("The order: " + o.food + " finished preparing at " + timeStamp);
-            log2File.log(Thread.currentThread().getName(), o.food, "preparado");
+
             LocalTime time = LocalTime.now();
             o.setTimePrepared(time.toNanoOfDay() - o.getTimeReceived());
+            deliverProm.addAllTimePrepare(o.getTimePrepared());
+
+            logger.info("El Pedido: " + o.food + " se terminó de preparar a las: " + timeStamp
+                    + " tiempo de perparación: " + String.valueOf(o.getTimePrepared() / 1000000));
+            log2File.log(Thread.currentThread().getName(), o.food, "preparado",
+                    String.valueOf(o.getTimePrepared() / 1000000));
+
             this.pedidos.add(o);
             totalOrders--;
         }
@@ -122,8 +129,8 @@ public class Local implements Runnable {
 
             dron.assignOrder(pedido);
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            logger.info("This Dron: " + dron.id + " picked this order " + pedido.food + " at " + timeStamp);
-            log2File.log(Thread.currentThread().getName(), pedido.food, "recogido");
+            logger.info("El Dron: " + dron.id + " levantó la orden: " + pedido.food + " a las: " + timeStamp);
+            log2File.log(Thread.currentThread().getName(), pedido.food, "recogido", String.valueOf(0));
             UtilsClass.run(dron);
         }
 

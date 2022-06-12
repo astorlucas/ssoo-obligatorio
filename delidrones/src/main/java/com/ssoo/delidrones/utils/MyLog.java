@@ -15,7 +15,7 @@ public class MyLog {
     static String fileDate = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
     private static final String logPath = "./src/logs/log" + fileDate + ".csv";
 
-    public void log(String threadName, String msg, String event) {
+    public void log(String threadName, String msg, String event, String timeToEvent) {
         File f;
         FileWriter fw;
         String timeStamp;
@@ -26,7 +26,7 @@ public class MyLog {
             fw = new FileWriter(f, true);
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write(timeStamp + "," + threadName + "," + msg + "," + event);
+            bw.write(timeStamp + "," + threadName + "," + msg + "," + event + "," + timeToEvent);
             bw.newLine();
 
             bw.close();

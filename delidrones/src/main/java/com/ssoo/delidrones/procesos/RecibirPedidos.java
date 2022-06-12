@@ -58,8 +58,8 @@ public class RecibirPedidos implements Runnable {
           pedido.setTimeReceived(time.toNanoOfDay());
           //pedidos.add(pedido);
           String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-          logger.info("Te order: " + linea[0] + " was received at " + timeStamp);
-          log2File.log(Thread.currentThread().getName(), linea[0] , "recibido");
+          logger.info("El pedido: " + linea[0] + " fue recibido a las: " + timeStamp);
+          log2File.log(Thread.currentThread().getName(), linea[0] , "recibido", String.valueOf(0));
           // Run every order lifecicle
           UtilsClass.run(pedido);
           // Add orders to the local

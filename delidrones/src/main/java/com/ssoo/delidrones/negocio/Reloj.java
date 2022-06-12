@@ -45,4 +45,8 @@ public class Reloj {
     public long promDeliver() {
         return (this.allTimeDeliver / this.counterDeliver );
     }
+
+    public long promPrepare() {
+        return (this.allTimePrepare / this.counterPrepare );
+    }
 }

@@ -34,7 +34,7 @@ public class DelidronesApplication {
 		MyLog log2File = new MyLog();
 
 		// Abrimos el local
-		Local mainLocal = new Local();
+		Local mainLocal = new Local(metrics, log2File);
 
 		// Se cargan los drones
 		for (int d = 1; d <= UtilsClass.ordersSize(); d++) {
@@ -49,14 +49,17 @@ public class DelidronesApplication {
 		UtilsClass.run(ourOrders);
 
 		UtilsClass.run(mainLocal);
-
+		
 		try {
-			Thread.sleep(30000);
+			Thread.sleep(180000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		logger.info("Tiempo promedio de entrega de pedidos: " + String.valueOf(metrics.promDeliver() / 1000000));
+		logger.info("Tiempo promedio de entrega de pedidos:" + String.valueOf(metrics.promDeliver() / 1000000));
+		log2File.log("main", "Tiempo promedio de entrega de pedidos:", String.valueOf(metrics.promDeliver() / 1000000),".");
+		logger.info("Tiempo promedio de preparación de pedidos:" + String.valueOf(metrics.promPrepare() / 1000000));
+		log2File.log("main", "Tiempo promedio de preparación de pedidos:", String.valueOf(metrics.promPrepare() / 1000000), ".");
 
 	}
 
