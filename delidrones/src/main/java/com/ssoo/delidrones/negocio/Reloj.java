@@ -7,20 +7,12 @@ public class Reloj {
     private long allTimePrepare;
 
 
-    public void setContador(int contador) {
-        this.counterDeliver = contador;
-    }
-
     public long getallTimeDeliver() {
         return allTimeDeliver;
     }
 
     public long getallTimePrepare() {
         return allTimePrepare;
-    }
-
-    public int getCounter() {
-        return counterDeliver;
     }
 
     public Reloj() {

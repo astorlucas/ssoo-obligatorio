@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.util.Arrays;
 import java.util.UUID;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import com.ssoo.delidrones.negocio.Dron;
@@ -35,6 +36,7 @@ public class DelidronesApplication {
 
 		// Abrimos el local
 		Local mainLocal = new Local(metrics, log2File);
+		logger.warning("#Inicia la jornada");
 
 		// Se cargan los drones
 		for (int d = 1; d <= UtilsClass.ordersSize(); d++) {
@@ -53,13 +55,13 @@ public class DelidronesApplication {
 		try {
 			Thread.sleep(180000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+ 			e.printStackTrace();
 		}
-		logger.info("Tiempo promedio de entrega de pedidos:" + String.valueOf(metrics.promDeliver() / 1000000));
-		log2File.log("main", "Tiempo promedio de entrega de pedidos:", String.valueOf(metrics.promDeliver() / 1000000),".");
-		logger.info("Tiempo promedio de preparación de pedidos:" + String.valueOf(metrics.promPrepare() / 1000000));
-		log2File.log("main", "Tiempo promedio de preparación de pedidos:", String.valueOf(metrics.promPrepare() / 1000000), ".");
+		logger.info("Promedio de entrega de pedidos:" + String.valueOf(TimeUnit.SECONDS.convert(metrics.promDeliver(), TimeUnit.NANOSECONDS)));
+		log2File.log("main", "--Promedio entrega", String.valueOf(TimeUnit.SECONDS.convert(metrics.promDeliver(), TimeUnit.NANOSECONDS)),"0");
+		logger.info("Promedio de preparación de pedidos:" + String.valueOf(TimeUnit.SECONDS.convert(metrics.promPrepare(), TimeUnit.NANOSECONDS)));
+		log2File.log("main", "--Promedio preparacion", String.valueOf(TimeUnit.SECONDS.convert(metrics.promPrepare(), TimeUnit.NANOSECONDS)), "0");
+		logger.warning("#Finaliza la jornada");
 
 	}
 

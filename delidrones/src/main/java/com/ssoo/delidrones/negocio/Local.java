@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import com.ssoo.delidrones.utils.MyLog;
@@ -45,9 +46,6 @@ public class Local implements Runnable {
 
             this.drones.add(o);
 
-            if (totalOrders == 0) {
-                logger.warning("# Finaliza la jornada");
-            }
         } else {
             if (Dron.PEDIDO_ENTREGADO.equals(s)) {
                 String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -56,10 +54,12 @@ public class Local implements Runnable {
                 o.pedido.setTimeDelivered(time.toNanoOfDay() - o.pedido.getTimeReceived());
                 deliverProm.addAllTimeDeliver(o.pedido.getTimeDelivered());
 
-                logger.info("El Pedido: " + o.pedido.food + " fue entregado a las: " + timeStamp + " tiempo de entrega "
-                        + String.valueOf(o.pedido.getTimeReceived() / 1000000));
+                long convertion = TimeUnit.SECONDS.convert(o.pedido.getTimeDelivered(), TimeUnit.NANOSECONDS);
+                logger.info("El Pedido: " + o.pedido.food + " fue entregado a las: " + timeStamp + " tiempo de entrega: "
+                        + String.valueOf(convertion) + "min");
+
                 log2File.log(Thread.currentThread().getName(), o.pedido.food, "entregado",
-                        String.valueOf(o.pedido.getTimeReceived() / 1000000));
+                        String.valueOf(convertion));
 
                 this.pedidosIngresados--;
 
@@ -80,10 +80,12 @@ public class Local implements Runnable {
             o.setTimePrepared(time.toNanoOfDay() - o.getTimeReceived());
             deliverProm.addAllTimePrepare(o.getTimePrepared());
 
+            long convertion = TimeUnit.SECONDS.convert(o.getTimePrepared(), TimeUnit.NANOSECONDS);
             logger.info("El Pedido: " + o.food + " se terminó de preparar a las: " + timeStamp
-                    + " tiempo de perparación: " + String.valueOf(o.getTimePrepared() / 1000000));
+                    + " tiempo de perparación: " + String.valueOf(convertion) + "min");
+
             log2File.log(Thread.currentThread().getName(), o.food, "preparado",
-                    String.valueOf(o.getTimePrepared() / 1000000));
+                    String.valueOf(convertion));
 
             this.pedidos.add(o);
             totalOrders--;
@@ -100,13 +102,8 @@ public class Local implements Runnable {
     }
 
     public void run() {
-        logger.warning("# Inicia la jornada");
-
-        // while (!this.hasPedidosIngresados()) {
-        // UtilsClass.sleep(2);
-        // }
-
-        while (totalOrders > 0) {// (this.hasPedidosIngresados() || this.hasPedidos()) {
+       
+        while (totalOrders > 0) {
 
             UtilsClass.sleep(5);
 
@@ -114,11 +111,6 @@ public class Local implements Runnable {
 
         }
 
-        // while (this.hasPedidosIngresados()) {
-        // UtilsClass.sleep(2);
-        // }
-
-        // logger.warning("# Finaliza la jornada");
     }
 
     private boolean procesarPedidos() {

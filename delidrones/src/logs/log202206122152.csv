@@ -1,0 +1,38 @@
+2022/06/12 21:53:06,Thread-1,hamburguesa,recibido,0
+2022/06/12 21:53:12,Thread-1,pizza,recibido,0
+2022/06/12 21:53:13,Thread-3,hamburguesa,preparado,7029
+2022/06/12 21:53:17,Thread-1,fritas,recibido,0
+2022/06/12 21:53:17,Thread-2,hamburguesa,recogido,0
+2022/06/12 21:53:20,Thread-4,pizza,preparado,8012
+2022/06/12 21:53:26,Thread-5,fritas,preparado,9023
+2022/06/12 21:53:27,Thread-6,hamburguesa,entregado,78786664
+2022/06/12 21:53:27,Thread-2,pizza,recogido,0
+2022/06/12 21:53:29,Thread-1,cazuela,recibido,0
+2022/06/12 21:53:35,Thread-1,cordero a la pizza,recibido,0
+2022/06/12 21:53:35,Thread-7,pizza,entregado,78792672
+2022/06/12 21:53:35,Thread-2,fritas,recogido,0
+2022/06/12 21:53:36,Thread-8,cazuela,preparado,7008
+2022/06/12 21:53:42,Thread-9,cordero a la pizza,preparado,7021
+2022/06/12 21:53:42,Thread-10,fritas,entregado,78797688
+2022/06/12 21:53:42,Thread-2,cazuela,recogido,0
+2022/06/12 21:53:46,Thread-1,bauru,recibido,0
+2022/06/12 21:53:52,Thread-11,cazuela,entregado,78809700
+2022/06/12 21:53:52,Thread-2,cordero a la pizza,recogido,0
+2022/06/12 21:53:53,Thread-12,bauru,preparado,7022
+2022/06/12 21:53:58,Thread-13,cordero a la pizza,entregado,78815704
+2022/06/12 21:53:58,Thread-2,bauru,recogido,0
+2022/06/12 21:54:00,Thread-1,gnoquis,recibido,0
+2022/06/12 21:54:03,Thread-14,bauru,entregado,78826714
+2022/06/12 21:54:07,Thread-15,gnoquis,preparado,7013
+2022/06/12 21:54:08,Thread-2,gnoquis,recogido,0
+2022/06/12 21:54:14,Thread-16,gnoquis,entregado,78840729
+2022/06/12 21:54:23,Thread-1,tallarines con tuco,recibido,0
+2022/06/12 21:54:29,Thread-1,pan,recibido,0
+2022/06/12 21:54:31,Thread-17,tallarines con tuco,preparado,8009
+2022/06/12 21:54:33,Thread-2,tallarines con tuco,recogido,0
+2022/06/12 21:54:36,Thread-18,pan,preparado,7010
+2022/06/12 21:54:40,Thread-19,tallarines con tuco,entregado,78863739
+2022/06/12 21:54:40,Thread-2,pan,recogido,0
+2022/06/12 21:54:48,Thread-20,pan,entregado,78869748
+2022/06/12 21:55:52,main,Promedio entrega,78835464,0
+2022/06/12 21:55:52,main,Promedio preparacion,7461,0

@@ -1,0 +1,38 @@
+2022/06/12 22:26:41,Thread-1,hamburguesa,recibido,0
+2022/06/12 22:26:47,Thread-1,pizza,recibido,0
+2022/06/12 22:26:53,Thread-3,hamburguesa,preparado,12020
+2022/06/12 22:26:57,Thread-2,hamburguesa,recogido,0
+2022/06/12 22:26:58,Thread-1,fritas,recibido,0
+2022/06/12 22:26:58,Thread-4,pizza,preparado,11022
+2022/06/12 22:27:03,Thread-5,hamburguesa,entregado,80801915
+2022/06/12 22:27:03,Thread-2,pizza,recogido,0
+2022/06/12 22:27:05,Thread-1,cazuela,recibido,0
+2022/06/12 22:27:09,Thread-6,fritas,preparado,11017
+2022/06/12 22:27:09,Thread-7,pizza,entregado,80807921
+2022/06/12 22:27:13,Thread-2,fritas,recogido,0
+2022/06/12 22:27:15,Thread-8,cazuela,preparado,10025
+2022/06/12 22:27:22,Thread-1,cordero a la pizza,recibido,0
+2022/06/12 22:27:26,Thread-9,fritas,entregado,80818928
+2022/06/12 22:27:26,Thread-2,cazuela,recogido,0
+2022/06/12 22:27:28,Thread-10,cordero a la pizza,preparado,6027
+2022/06/12 22:27:32,Thread-1,bauru,recibido,0
+2022/06/12 22:27:35,Thread-11,cazuela,entregado,80825931
+2022/06/12 22:27:35,Thread-2,cordero a la pizza,recogido,0
+2022/06/12 22:27:41,Thread-12,bauru,preparado,9014
+2022/06/12 22:27:42,Thread-13,cordero a la pizza,entregado,80842947
+2022/06/12 22:27:45,Thread-2,bauru,recogido,0
+2022/06/12 22:27:50,Thread-1,gnoquis,recibido,0
+2022/06/12 22:27:55,Thread-14,bauru,entregado,80852955
+2022/06/12 22:27:56,Thread-15,gnoquis,preparado,6030
+2022/06/12 22:28:00,Thread-2,gnoquis,recogido,0
+2022/06/12 22:28:02,Thread-1,tallarines con tuco,recibido,0
+2022/06/12 22:28:04,Thread-16,gnoquis,entregado,80870958
+2022/06/12 22:28:09,Thread-1,pan,recibido,0
+2022/06/12 22:28:12,Thread-17,tallarines con tuco,preparado,10026
+2022/06/12 22:28:15,Thread-2,tallarines con tuco,recogido,0
+2022/06/12 22:28:19,Thread-18,pan,preparado,10009
+2022/06/12 22:28:24,Thread-19,tallarines con tuco,entregado,80882970
+2022/06/12 22:28:24,Thread-2,pan,recogido,0
+2022/06/12 22:28:31,Thread-20,pan,entregado,80889975
+2022/06/12 22:29:12,main,--Promedio entrega,21882,0
+2022/06/12 22:29:12,main,--Promedio preparacion,9466,0

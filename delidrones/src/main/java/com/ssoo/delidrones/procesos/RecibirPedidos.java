@@ -17,14 +17,9 @@ public class RecibirPedidos implements Runnable {
 
   private int total;
   private Local mainLocal;
-  private Pedido pedido;
-  //private Queue<Pedido> pedidos = new LinkedList<Pedido>();
   Logger logger =  Logger.getLogger(this.getClass().getName());
   private MyLog log2File = new MyLog();
-  // public RecibirPedidos(int total, Local thisLocal) {
-  // this.total = total;
-  // this.mainLocal = thisLocal;
-  // }
+
 
   public void setTotal(int total) {
     this.total = total;
@@ -56,7 +51,6 @@ public class RecibirPedidos implements Runnable {
           Pedido pedido = new Pedido(this.total + "", linea[0], linea[1], linea[2], distance);
           LocalTime time = LocalTime.now();
           pedido.setTimeReceived(time.toNanoOfDay());
-          //pedidos.add(pedido);
           String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
           logger.info("El pedido: " + linea[0] + " fue recibido a las: " + timeStamp);
           log2File.log(Thread.currentThread().getName(), linea[0] , "recibido", String.valueOf(0));

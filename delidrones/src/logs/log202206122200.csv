@@ -1,0 +1,38 @@
+2022/06/12 22:01:00,Thread-1,hamburguesa,recibido,0
+2022/06/12 22:01:05,Thread-3,hamburguesa,preparado,5025
+2022/06/12 22:01:07,Thread-2,hamburguesa,recogido,0
+2022/06/12 22:01:10,Thread-1,pizza,recibido,0
+2022/06/12 22:01:18,Thread-1,fritas,recibido,0
+2022/06/12 22:01:18,Thread-4,hamburguesa,entregado,79260886
+2022/06/12 22:01:19,Thread-5,pizza,preparado,9006
+2022/06/12 22:01:22,Thread-2,pizza,recogido,0
+2022/06/12 22:01:27,Thread-6,fritas,preparado,9008
+2022/06/12 22:01:28,Thread-7,pizza,entregado,79270902
+2022/06/12 22:01:28,Thread-2,fritas,recogido,0
+2022/06/12 22:01:30,Thread-1,cazuela,recibido,0
+2022/06/12 22:01:33,Thread-8,fritas,entregado,79278919
+2022/06/12 22:01:39,Thread-9,cazuela,preparado,9017
+2022/06/12 22:01:43,Thread-2,cazuela,recogido,0
+2022/06/12 22:01:51,Thread-1,cordero a la pizza,recibido,0
+2022/06/12 22:01:52,Thread-10,cazuela,entregado,79290935
+2022/06/12 22:01:59,Thread-11,cordero a la pizza,preparado,8023
+2022/06/12 22:02:04,Thread-2,cordero a la pizza,recogido,0
+2022/06/12 22:02:12,Thread-12,cordero a la pizza,entregado,79311958
+2022/06/12 22:02:21,Thread-1,bauru,recibido,0
+2022/06/12 22:02:29,Thread-1,gnoquis,recibido,0
+2022/06/12 22:02:31,Thread-13,bauru,preparado,10016
+2022/06/12 22:02:34,Thread-2,bauru,recogido,0
+2022/06/12 22:02:38,Thread-14,gnoquis,preparado,9017
+2022/06/12 22:02:42,Thread-1,tallarines con tuco,recibido,0
+2022/06/12 22:02:43,Thread-15,bauru,entregado,79341968
+2022/06/12 22:02:43,Thread-2,gnoquis,recogido,0
+2022/06/12 22:02:50,Thread-16,tallarines con tuco,preparado,7027
+2022/06/12 22:02:52,Thread-1,pan,recibido,0
+2022/06/12 22:02:55,Thread-17,gnoquis,entregado,79349971
+2022/06/12 22:02:55,Thread-2,tallarines con tuco,recogido,0
+2022/06/12 22:03:00,Thread-18,pan,preparado,8012
+2022/06/12 22:03:05,Thread-19,tallarines con tuco,entregado,79362981
+2022/06/12 22:03:05,Thread-2,pan,recogido,0
+2022/06/12 22:03:15,Thread-20,pan,entregado,79372984
+2022/06/12 22:03:47,main,Promedio entrega,79327903,0
+2022/06/12 22:03:47,main,Promedio preparacion,8239,0
