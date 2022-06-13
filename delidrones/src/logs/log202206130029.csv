@@ -1,0 +1,24 @@
+2022/06/13 00:29:12,Thread-1,hamburguesa,recibido,0
+2022/06/13 00:29:22,Thread-1,pizza,recibido,0
+2022/06/13 00:29:24,Thread-3,hamburguesa,preparado,12
+2022/06/13 00:29:28,Thread-2,hamburguesa,recogido,0
+2022/06/13 00:29:31,Thread-1,fritas,recibido,0
+2022/06/13 00:29:32,Thread-4,pizza,preparado,10
+2022/06/13 00:29:38,Thread-5,hamburguesa,entregado,26
+2022/06/13 00:29:38,Thread-2,pizza,recogido,0
+2022/06/13 00:29:39,Thread-1,cazuela,recibido,0
+2022/06/13 00:29:41,Thread-6,fritas,preparado,10
+2022/06/13 00:29:46,Thread-7,pizza,entregado,24
+2022/06/13 00:29:46,Thread-2,fritas,recogido,0
+2022/06/13 00:29:48,Thread-1,panchito,recibido,0
+2022/06/13 00:29:50,Thread-8,cazuela,preparado,11
+2022/06/13 00:29:51,Thread-9,fritas,entregado,20
+2022/06/13 00:29:51,Thread-2,cazuela,recogido,0
+2022/06/13 00:29:54,Thread-1,cordero a la pizza,recibido,0
+2022/06/13 00:29:57,Thread-10,panchito,preparado,9
+2022/06/13 00:29:57,Thread-11,cazuela,entregado,18
+2022/06/13 00:30:01,Thread-2,panchito,recogido,0
+2022/06/13 00:30:02,Thread-12,cordero a la pizza,preparado,8
+2022/06/13 00:30:03,Thread-1,bauru,recibido,0
+2022/06/13 00:30:08,Thread-13,panchito,entregado,20
+2022/06/13 00:30:08,Thread-2,cordero a la pizza,recogido,0

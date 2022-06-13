@@ -1,0 +1,46 @@
+2022/06/13 00:12:44,Thread-1,hamburguesa,recibido,0
+2022/06/13 00:12:50,Thread-1,pizza,recibido,0
+2022/06/13 00:12:51,Thread-3,hamburguesa,preparado,7
+2022/06/13 00:12:52,Thread-2,hamburguesa,recogido,0
+2022/06/13 00:12:59,Thread-1,fritas,recibido,0
+2022/06/13 00:13:00,Thread-4,pizza,preparado,10
+2022/06/13 00:13:02,Thread-5,hamburguesa,entregado,18
+2022/06/13 00:13:02,Thread-2,pizza,recogido,0
+2022/06/13 00:13:05,Thread-1,cazuela,recibido,0
+2022/06/13 00:13:06,Thread-6,fritas,preparado,7
+2022/06/13 00:13:12,Thread-7,pizza,entregado,22
+2022/06/13 00:13:12,Thread-8,cazuela,preparado,7
+2022/06/13 00:13:12,Thread-2,fritas,recogido,0
+2022/06/13 00:13:15,Thread-1,panchito,recibido,0
+2022/06/13 00:13:20,Thread-9,fritas,entregado,21
+2022/06/13 00:13:20,Thread-2,cazuela,recogido,0
+2022/06/13 00:13:24,Thread-10,panchito,preparado,9
+2022/06/13 00:13:25,Thread-1,cordero a la pizza,recibido,0
+2022/06/13 00:13:25,Thread-11,cazuela,entregado,20
+2022/06/13 00:13:25,Thread-2,panchito,recogido,0
+2022/06/13 00:13:30,Thread-1,bauru,recibido,0
+2022/06/13 00:13:30,Thread-13,panchito,entregado,15
+2022/06/13 00:13:31,Thread-12,cordero a la pizza,preparado,6
+2022/06/13 00:13:35,Thread-2,cordero a la pizza,recogido,0
+2022/06/13 00:13:36,Thread-1,gnoquis,recibido,0
+2022/06/13 00:13:37,Thread-14,bauru,preparado,7
+2022/06/13 00:13:41,Thread-16,gnoquis,preparado,5
+2022/06/13 00:13:41,Thread-1,tallarines con tuco,recibido,0
+2022/06/13 00:13:43,Thread-15,cordero a la pizza,entregado,18
+2022/06/13 00:13:43,Thread-2,bauru,recogido,0
+2022/06/13 00:13:46,Thread-1,pan,recibido,0
+2022/06/13 00:13:49,Thread-17,tallarines con tuco,preparado,8
+2022/06/13 00:13:49,Thread-18,bauru,entregado,19
+2022/06/13 00:13:49,Thread-2,gnoquis,recogido,0
+2022/06/13 00:13:55,Thread-1,panchito,recibido,0
+2022/06/13 00:13:55,Thread-19,pan,preparado,9
+2022/06/13 00:13:59,Thread-20,gnoquis,entregado,23
+2022/06/13 00:13:59,Thread-2,tallarines con tuco,recogido,0
+2022/06/13 00:14:02,Thread-21,panchito,preparado,7
+2022/06/13 00:14:10,Thread-22,tallarines con tuco,entregado,29
+2022/06/13 00:14:10,Thread-2,pan,recogido,0
+2022/06/13 00:14:16,Thread-23,pan,entregado,30
+2022/06/13 00:14:16,Thread-2,panchito,recogido,0
+2022/06/13 00:14:24,Thread-24,panchito,entregado,29
+2022/06/13 00:15:37,main,--Promedio entrega,22,0
+2022/06/13 00:15:37,main,--Promedio preparacion,7,0

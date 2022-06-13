@@ -1,0 +1,46 @@
+2022/06/12 23:59:23,Thread-1,hamburguesa,recibido,0
+2022/06/12 23:59:28,Thread-3,hamburguesa,preparado,5
+2022/06/12 23:59:30,Thread-2,hamburguesa,recogido,0
+2022/06/12 23:59:32,Thread-1,pizza,recibido,0
+2022/06/12 23:59:37,Thread-1,fritas,recibido,0
+2022/06/12 23:59:38,Thread-4,hamburguesa,entregado,15
+2022/06/12 23:59:41,Thread-5,pizza,preparado,9
+2022/06/12 23:59:44,Thread-1,cazuela,recibido,0
+2022/06/12 23:59:45,Thread-6,fritas,preparado,8
+2022/06/12 23:59:45,Thread-2,pizza,recogido,0
+2022/06/12 23:59:49,Thread-7,cazuela,preparado,5
+2022/06/12 23:59:49,Thread-8,pizza,entregado,17
+2022/06/12 23:59:49,Thread-2,fritas,recogido,0
+2022/06/13 00:00:00,Thread-9,fritas,entregado,-86376
+2022/06/13 00:00:00,Thread-2,cazuela,recogido,0
+2022/06/13 00:00:05,Thread-1,panchito,recibido,0
+2022/06/13 00:00:07,Thread-10,cazuela,entregado,-86376
+2022/06/13 00:00:15,Thread-11,panchito,preparado,10
+2022/06/13 00:00:15,Thread-2,panchito,recogido,0
+2022/06/13 00:00:21,Thread-1,cordero a la pizza,recibido,0
+2022/06/13 00:00:26,Thread-12,panchito,entregado,21
+2022/06/13 00:00:29,Thread-13,cordero a la pizza,preparado,8
+2022/06/13 00:00:30,Thread-2,cordero a la pizza,recogido,0
+2022/06/13 00:00:39,Thread-1,bauru,recibido,0
+2022/06/13 00:00:39,Thread-14,cordero a la pizza,entregado,18
+2022/06/13 00:00:44,Thread-15,bauru,preparado,5
+2022/06/13 00:00:45,Thread-2,bauru,recogido,0
+2022/06/13 00:00:51,Thread-1,gnoquis,recibido,0
+2022/06/13 00:00:52,Thread-16,bauru,entregado,13
+2022/06/13 00:00:57,Thread-17,gnoquis,preparado,6
+2022/06/13 00:01:00,Thread-2,gnoquis,recogido,0
+2022/06/13 00:01:11,Thread-18,gnoquis,entregado,20
+2022/06/13 00:01:19,Thread-1,tallarines con tuco,recibido,0
+2022/06/13 00:01:30,Thread-19,tallarines con tuco,preparado,11
+2022/06/13 00:01:30,Thread-2,tallarines con tuco,recogido,0
+2022/06/13 00:01:35,Thread-1,pan,recibido,0
+2022/06/13 00:01:36,Thread-20,tallarines con tuco,entregado,17
+2022/06/13 00:01:43,Thread-21,pan,preparado,8
+2022/06/13 00:01:45,Thread-2,pan,recogido,0
+2022/06/13 00:01:56,Thread-22,pan,entregado,21
+2022/06/13 00:02:00,main,--Promedio entrega,-17261,0
+2022/06/13 00:02:00,main,--Promedio preparacion,7,0
+2022/06/13 00:02:27,Thread-1,panchito,recibido,0
+2022/06/13 00:02:34,Thread-23,panchito,preparado,7
+2022/06/13 00:02:35,Thread-2,panchito,recogido,0
+2022/06/13 00:02:43,Thread-24,panchito,entregado,16

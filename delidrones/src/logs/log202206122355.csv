@@ -1,0 +1,38 @@
+2022/06/12 23:55:59,Thread-1,hamburguesa,recibido,0
+2022/06/12 23:56:04,Thread-3,hamburguesa,preparado,5
+2022/06/12 23:56:09,Thread-1,pizza,recibido,0
+2022/06/12 23:56:09,Thread-2,hamburguesa,recogido,0
+2022/06/12 23:56:17,Thread-1,fritas,recibido,0
+2022/06/12 23:56:17,Thread-5,hamburguesa,entregado,18
+2022/06/12 23:56:18,Thread-4,pizza,preparado,9
+2022/06/12 23:56:19,Thread-2,pizza,recogido,0
+2022/06/12 23:56:22,Thread-1,cazuela,recibido,0
+2022/06/12 23:56:23,Thread-6,fritas,preparado,6
+2022/06/12 23:56:25,Thread-7,pizza,entregado,16
+2022/06/12 23:56:25,Thread-2,fritas,recogido,0
+2022/06/12 23:56:27,Thread-8,cazuela,preparado,5
+2022/06/12 23:56:30,Thread-9,fritas,entregado,13
+2022/06/12 23:56:30,Thread-2,cazuela,recogido,0
+2022/06/12 23:56:31,Thread-1,cordero a la pizza,recibido,0
+2022/06/12 23:56:35,Thread-10,cazuela,entregado,13
+2022/06/12 23:56:39,Thread-11,cordero a la pizza,preparado,8
+2022/06/12 23:56:40,Thread-2,cordero a la pizza,recogido,0
+2022/06/12 23:56:41,Thread-1,bauru,recibido,0
+2022/06/12 23:56:46,Thread-1,gnoquis,recibido,0
+2022/06/12 23:56:49,Thread-13,bauru,preparado,8
+2022/06/12 23:56:50,Thread-12,cordero a la pizza,entregado,19
+2022/06/12 23:56:50,Thread-2,bauru,recogido,0
+2022/06/12 23:56:54,Thread-14,gnoquis,preparado,8
+2022/06/12 23:57:01,Thread-15,bauru,entregado,20
+2022/06/12 23:57:01,Thread-2,gnoquis,recogido,0
+2022/06/12 23:57:05,Thread-1,tallarines con tuco,recibido,0
+2022/06/12 23:57:11,Thread-16,gnoquis,entregado,25
+2022/06/12 23:57:15,Thread-1,pan,recibido,0
+2022/06/12 23:57:17,Thread-17,tallarines con tuco,preparado,12
+2022/06/12 23:57:21,Thread-2,tallarines con tuco,recogido,0
+2022/06/12 23:57:23,Thread-18,pan,preparado,8
+2022/06/12 23:57:31,Thread-19,tallarines con tuco,entregado,26
+2022/06/12 23:57:31,Thread-2,pan,recogido,0
+2022/06/12 23:57:40,Thread-20,pan,entregado,25
+2022/06/12 23:58:39,main,--Promedio entrega,19,0
+2022/06/12 23:58:39,main,--Promedio preparacion,7,0
