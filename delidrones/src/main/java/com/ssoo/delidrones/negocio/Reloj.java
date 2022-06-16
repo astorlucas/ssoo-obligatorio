@@ -1,7 +1,7 @@
 package com.ssoo.delidrones.negocio;
 
 public class Reloj {
-    private int counterDeliver;
+    public int counterDeliver;
     private int counterPrepare;
     private long allTimeDeliver;
     private long allTimePrepare;

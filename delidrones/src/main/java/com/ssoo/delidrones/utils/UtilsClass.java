@@ -44,4 +44,15 @@ public class UtilsClass {
         return size;
     }
 
+    public static int customWait() {
+        int customSize = 0;
+        if (ordersSize() < 40) {
+            customSize = 170000;
+        }
+        if (ordersSize() > 80 || ordersSize() < 105) {
+            customSize = 180000 + 180000 + 90000;
+        }
+        return customSize;
+
+    }
 }

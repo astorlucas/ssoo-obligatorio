@@ -39,11 +39,11 @@ public class Dron extends Watched {
 
         this.mainLocal.changeState(this, HACIA_EL_RESTAURANT);
 
-        UtilsClass.sleepRand(2, 6);
+        UtilsClass.sleepRand(1, 3);
 
         this.mainLocal.changeState(this, HACIA_EL_DESTINO);
 
-        UtilsClass.sleepRand(2, 6);
+        UtilsClass.sleepRand(1, 3);
 
         this.mainLocal.changeState(this, PEDIDO_ENTREGADO);
 

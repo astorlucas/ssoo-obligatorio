@@ -42,8 +42,8 @@ public class Local implements Runnable {
 
     public void changeState(Dron o, String s) {
         if (Dron.DISPONIBLE.equals(s)) {
-            print("Dron " + o.id, s);
 
+            print("Dron " + o.id, s);
             this.drones.add(o);
 
         } else {
@@ -55,8 +55,9 @@ public class Local implements Runnable {
                 deliverProm.addAllTimeDeliver(o.pedido.getTimeDelivered());
 
                 long convertion = TimeUnit.SECONDS.convert(o.pedido.getTimeDelivered(), TimeUnit.NANOSECONDS);
-                logger.info("El Pedido: " + o.pedido.food + " fue entregado a las: " + timeStamp + " tiempo de entrega: "
-                        + String.valueOf(convertion) + "min");
+                logger.info(
+                        "El Pedido: " + o.pedido.food + " fue entregado a las: " + timeStamp + " tiempo de entrega: "
+                                + String.valueOf(convertion));
 
                 log2File.log(Thread.currentThread().getName(), o.pedido.food, "entregado",
                         String.valueOf(convertion));
@@ -82,7 +83,7 @@ public class Local implements Runnable {
 
             long convertion = TimeUnit.SECONDS.convert(o.getTimePrepared(), TimeUnit.NANOSECONDS);
             logger.info("El Pedido: " + o.food + " se terminó de preparar a las: " + timeStamp
-                    + " tiempo de perparación: " + String.valueOf(convertion) + "min");
+                    + " tiempo de perparación: " + String.valueOf(convertion));
 
             log2File.log(Thread.currentThread().getName(), o.food, "preparado",
                     String.valueOf(convertion));
@@ -102,10 +103,10 @@ public class Local implements Runnable {
     }
 
     public void run() {
-       
+
         while (totalOrders > 0) {
 
-            UtilsClass.sleep(5);
+            UtilsClass.sleep(2);
 
             this.procesarPedidos();
 
