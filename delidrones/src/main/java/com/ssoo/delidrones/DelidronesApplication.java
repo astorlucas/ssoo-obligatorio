@@ -44,7 +44,7 @@ public class DelidronesApplication {
 		}
 
 		// Se comienzan a recibir pedidos
-		RecibirPedidos ourOrders = new RecibirPedidos();
+		RecibirPedidos ourOrders = new RecibirPedidos(metrics);
 		ourOrders.setTotal(UtilsClass.ordersSize());
 		ourOrders.setLocal(mainLocal);
 
@@ -53,7 +53,7 @@ public class DelidronesApplication {
 		UtilsClass.run(mainLocal);
 		
 		try {
-			Thread.sleep(180000);
+			Thread.sleep(UtilsClass.customWait());
 		} catch (InterruptedException e) {
  			e.printStackTrace();
 		}

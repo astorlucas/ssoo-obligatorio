@@ -52,11 +52,11 @@ public class Pedido extends Watched {
 
         this.mainLocal.changeState(this, INGRESADO);
 
-        UtilsClass.sleepRand(2, 6);
+        UtilsClass.sleepRand(1, 4);
 
         this.mainLocal.changeState(this, EN_PROCESO);
 
-        UtilsClass.sleepRand(2, 6);
+        UtilsClass.sleepRand(1, 4);
 
         this.mainLocal.changeState(this, PREPARADO);
         

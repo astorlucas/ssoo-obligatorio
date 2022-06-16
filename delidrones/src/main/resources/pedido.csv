@@ -1,9 +1,104 @@
-hamburguesa,ORIGEN 1,ingresado,21
-pizza,ORIGEN 2,ingresado,2
-fritas,ORIGEN 5,ingresado,1
-cazuela,ORIGEN 60,ingresado,11
-cordero a la pizza,ORIGEN 77,ingresado,16
-bauru,ORIGEN 80,ingresado,20
-gnoquis,ORIGEN 81,ingresado,8
-tallarines con tuco,ORIGEN 97,ingresado,22
-pan,ORIGEN 98,ingresado,10
+Phascogale calura,6640 Montana Court,ingresado,93
+Castor canadensis,9 Hoepker Drive,ingresado,85
+Colaptes campestroides,8964 Hudson Terrace,ingresado,49
+Ictalurus furcatus,1641 Redwing Terrace,ingresado,80
+Canis mesomelas,632 Ilene Lane,ingresado,3
+Sarkidornis melanotos,188 Hauk Park,ingresado,87
+Eudromia elegans,389 Alpine Alley,ingresado,23
+Tamiasciurus hudsonicus,76628 Basil Drive,ingresado,33
+Anser caerulescens,6656 Mesta Point,ingresado,7
+Merops sp.,094 Longview Parkway,ingresado,30
+Dicrurus adsimilis,64 Graceland Park,ingresado,15
+Francolinus coqui,81 Roxbury Hill,ingresado,14
+Cochlearius cochlearius,63 Johnson Court,ingresado,66
+Hymenolaimus malacorhynchus,2544 Talmadge Parkway,ingresado,65
+panchito,ORIGEN 98,ingresado,63
+Equus burchelli,76 Laurel Parkway,ingresado,76
+Gyps bengalensis,7 Magdeline Pass,ingresado,63
+Gekko gecko,318 Bunker Hill Street,ingresado,93
+Canis aureus,0 Di Loreto Road,ingresado,7
+Naja sp.,13 Pawling Way,ingresado,39
+panchito,ORIGEN 98,ingresado,61
+Cebus albifrons,4314 American Way,ingresado,21
+Snycerus caffer,31 Superior Trail,ingresado,29
+Vulpes vulpes,7 Kipling Trail,ingresado,55
+panchito,ORIGEN 98,ingresado,61
+Paraxerus cepapi,3467 Clemons Trail,ingresado,78
+Phalacrocorax niger,97 Merry Way,ingresado,68
+Ramphastos tucanus,9 Maywood Crossing,ingresado,66
+Capreolus capreolus,63104 Warrior Drive,ingresado,59
+Agama sp.,0683 Stuart Road,ingresado,88
+Butorides striatus,96 Spaight Drive,ingresado,58
+Gymnorhina tibicen,88721 Kingsford Point,ingresado,32
+Papio cynocephalus,940 Susan Place,ingresado,92
+Sciurus niger,5 Donald Road,ingresado,52
+panchito,ORIGEN 98,ingresado,61
+Podargus strigoides,1 Burrows Alley,ingresado,99
+Spizaetus coronatus,9 Westerfield Crossing,ingresado,3
+Corvus albicollis,75123 Merchant Lane,ingresado,27
+Ammospermophilus nelsoni,4307 Westerfield Terrace,ingresado,33
+Sula dactylatra,0 Dawn Avenue,ingresado,33
+Junonia genoveua,72 Green Ridge Center,ingresado,52
+Lamprotornis superbus,34 Russell Lane,ingresado,20
+Actophilornis africanus,73 Ridgeview Crossing,ingresado,13
+Columba palumbus,80 Tennyson Circle,ingresado,65
+Lemur fulvus,47 Evergreen Road,ingresado,38
+Anhinga rufa,03316 Shelley Junction,ingresado,80
+Balearica pavonina,2 Colorado Plaza,ingresado,37
+Otaria flavescens,58 Maple Road,ingresado,4
+Columba palumbus,74 Havey Park,ingresado,76
+Merops nubicus,5 Heath Point,ingresado,56
+Eurocephalus anguitimens,554 Dapin Parkway,ingresado,29
+Acanthaster planci,10245 Autumn Leaf Parkway,ingresado,12
+Callipepla gambelii,50 Manley Trail,ingresado,29
+Dendrohyrax brucel,995 Eagan Center,ingresado,14
+Haliaeetus leucoryphus,8 International Junction,ingresado,85
+Mabuya spilogaster,7762 Pond Crossing,ingresado,66
+Naja haje,6085 Dorton Circle,ingresado,77
+Ceryle rudis,00948 Brentwood Circle,ingresado,32
+Dendrohyrax brucel,8279 Quincy Trail,ingresado,82
+Junonia genoveua,5 Karstens Drive,ingresado,66
+Connochaetus taurinus,43779 Carioca Center,ingresado,66
+Tockus erythrorhyncus,819 Buell Park,ingresado,63
+Lutra canadensis,94 Maple Wood Crossing,ingresado,59
+Larus novaehollandiae,760 Maryland Crossing,ingresado,86
+Buteo galapagoensis,80 Veith Road,ingresado,17
+Centrocercus urophasianus,5051 Harbort Pass,ingresado,94
+Zonotrichia capensis,2930 Bayside Drive,ingresado,44
+Larus novaehollandiae,5834 Bunting Pass,ingresado,94
+Priodontes maximus,1 Farmco Pass,ingresado,48
+unavailable,4 Fordem Center,ingresado,48
+Cyrtodactylus louisiadensis,607 Ryan Way,ingresado,90
+unavailable,882 Mitchell Way,ingresado,88
+Ovis dalli stonei,0635 Karstens Lane,ingresado,98
+Stercorarius longicausus,5 Hagan Way,ingresado,87
+Alligator mississippiensis,61 Del Sol Point,ingresado,75
+Oxybelis fulgidus,2 Mallory Plaza,ingresado,19
+Macropus rufogriseus,78254 Anhalt Junction,ingresado,75
+Antidorcas marsupialis,233 Ronald Regan Street,ingresado,52
+Anastomus oscitans,67 International Road,ingresado,73
+Coluber constrictor,339 Sutteridge Junction,ingresado,20
+Callipepla gambelii,64507 Stang Avenue,ingresado,74
+Boa caninus,799 Stuart Way,ingresado,93
+Acrantophis madagascariensis,5 Coleman Court,ingresado,73
+Boa constrictor mexicana,72785 Hanson Court,ingresado,100
+Eudyptula minor,34 Continental Alley,ingresado,12
+Limnocorax flavirostra,7 Swallow Trail,ingresado,97
+Procyon cancrivorus,865 Vernon Court,ingresado,3
+Geochelone radiata,586 Anthes Way,ingresado,87
+Paraxerus cepapi,7 Warbler Road,ingresado,45
+Ara macao,806 Monument Junction,ingresado,25
+Canis lupus lycaon,6 Lien Point,ingresado,12
+Carphophis sp.,64467 Northland Hill,ingresado,42
+Phaethon aethereus,303 Mosinee Circle,ingresado,9
+Hystrix indica,3 Hansons Junction,ingresado,62
+Prionace glauca,5142 Hovde Avenue,ingresado,53
+Colobus guerza,754 Merchant Street,ingresado,60
+Varanus albigularis,5333 Maple Alley,ingresado,86
+Eudromia elegans,069 Chive Court,ingresado,26
+Milvago chimachima,8 Pearson Avenue,ingresado,75
+Lorythaixoides concolor,467 Claremont Way,ingresado,7
+Cebus apella,1 Hoepker Point,ingresado,36
+Bubalornis niger,3866 Arrowood Way,ingresado,81
+Dasyurus maculatus,52145 Valley Edge Drive,ingresado,90
+Cynictis penicillata,088 Bonner Pass,ingresado,74
